@@ -1,52 +1,23 @@
-const news = [
-  {
-    title: "Открытие нового медицинского кабинета",
-    date: "14 июля 2026",
-    text: "В больнице открыт новый кабинет для улучшения качества обслуживания пациентов.",
-  },
-  {
-    title: "Профилактический медицинский осмотр",
-    date: "10 июля 2026",
-    text: "Жители области могут пройти бесплатный профилактический осмотр.",
-  },
-  {
-    title: "Повышение квалификации врачей",
-    date: "5 июля 2026",
-    text: "Специалисты больницы прошли обучение по современным методам лечения.",
-  },
-];
+type NewsItem = {
+  title: string;
+  date: string;
+  text: string;
+};
 
-function News() {
+function NewsCard({ news }: { news: NewsItem }) {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-blue-800">
-          Новости больницы
-        </h2>
+    <article className="bg-white rounded-xl shadow p-6 border">
+      <p className="text-sm text-gray-500">{news.date}</p>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-10">
-          {news.map((item) => (
-            <article
-              key={item.title}
-              className="border rounded-xl p-6 shadow-sm hover:shadow-md transition"
-            >
-              <p className="text-sm text-gray-500">{item.date}</p>
+      <h3 className="text-xl font-bold text-blue-700 mt-3">{news.title}</h3>
 
-              <h3 className="text-xl font-bold mt-3 text-blue-700">
-                {item.title}
-              </h3>
+      <p className="text-gray-600 mt-3">{news.text}</p>
 
-              <p className="mt-3 text-gray-600">{item.text}</p>
-
-              <button className="mt-5 text-blue-700 font-semibold">
-                Читать далее →
-              </button>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+      <button className="mt-5 text-blue-700 font-semibold">
+        Читать далее →
+      </button>
+    </article>
   );
 }
 
-export default News;
+export default NewsCard;

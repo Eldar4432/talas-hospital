@@ -1,10 +1,10 @@
-import DepartmentsCard from "../components/DepartmentCard";
-import NewsCard from "../components/NewsCard";
+import DepartmentsSection from "../components/DepartmentsSection";
 import DoctorsSection from "../components/DoctorsSection";
-import ContactsCard from "../components/ContactCard";
+import NewsSection from "../components/NewsSelection";
 import Hero from "../components/Hero";
 import Statistics from "../components/Statistics";
 import Doctors from "./Doctors";
+import ContactsSection from "../components/ContactsSelections";
 
 function Home() {
   return (
@@ -27,10 +27,10 @@ function Home() {
           </button>
         </div>
       </section>
-      <DepartmentsCard />
+      <DepartmentsSection />
+      <NewsSection />
       <Doctors />
-      <NewsCard />
-      <ContactsCard />
+      <ContactsSection />
       <DoctorsSection />
     </main>
   );
