@@ -1,16 +1,16 @@
-import DoctorsCard from "../components/DoctorCard";
+import DoctorsCard from "./DoctorCard";
 import { doctors } from "../data/doctors";
 
-function Doctors() {
+function DoctorsSection() {
   return (
-    <section className="py-16">
+    <section className="py-16 bg-blue-50">
       <div className="max-w-7xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-blue-800 text-center">
+        <h2 className="text-3xl font-bold text-center text-blue-800">
           Наши врачи
-        </h1>
+        </h2>
 
         <div className="grid md:grid-cols-3 gap-8 mt-10">
-          {doctors.map((doctor) => (
+          {doctors.slice(0, 3).map((doctor) => (
             <DoctorsCard key={doctor.name} doctor={doctor} />
           ))}
         </div>
@@ -19,4 +19,4 @@ function Doctors() {
   );
 }
 
-export default Doctors;
+export default DoctorsSection;

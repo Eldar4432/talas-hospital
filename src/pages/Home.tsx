@@ -1,9 +1,10 @@
-import DepartmentsCard from "../components/DepartmentsCard";
-import DoctorsCard from "../components/DoctorsCard";
+import DepartmentsCard from "../components/DepartmentCard";
 import NewsCard from "../components/NewsCard";
-import ContactsCard from "../components/ContactsCard";
+import DoctorsSection from "../components/DoctorsSection";
+import ContactsCard from "../components/ContactCard";
 import Hero from "../components/Hero";
 import Statistics from "../components/Statistics";
+import Doctors from "./Doctors";
 
 function Home() {
   return (
@@ -27,9 +28,10 @@ function Home() {
         </div>
       </section>
       <DepartmentsCard />
-      <DoctorsCard />
+      <Doctors />
       <NewsCard />
       <ContactsCard />
+      <DoctorsSection />
     </main>
   );
 }
