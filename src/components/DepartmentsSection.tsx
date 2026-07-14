@@ -11,7 +11,7 @@ function DepartmentsSection() {
 
         <div className="grid md:grid-cols-4 gap-6 mt-10">
           {departments.slice(0, 4).map((department) => (
-            <DepartmentCard key={department.title} department={department} />
+            <DepartmentCard key={department.id} department={department} />
           ))}
         </div>
       </div>

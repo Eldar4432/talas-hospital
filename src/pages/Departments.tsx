@@ -11,7 +11,7 @@ function Departments() {
 
         <div className="grid md:grid-cols-3 gap-6 mt-10">
           {departments.map((department) => (
-            <DepartmentCard key={department.title} department={department} />
+            <DepartmentCard key={department.id} department={department} />
           ))}
         </div>
       </div>

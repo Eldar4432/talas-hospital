@@ -1,12 +1,15 @@
 type Department = {
-  title: string;
+  id: number;
+  name: string;
   description: string;
+  services: string[];
+  schedule: string;
 };
 
 function DepartmentCard({ department }: { department: Department }) {
   return (
     <div className="bg-white rounded-xl shadow p-6 border">
-      <h3 className="text-xl font-bold text-blue-700">{department.title}</h3>
+      <h3 className="text-xl font-bold text-blue-700">{department.name}</h3>
 
       <p className="mt-3 text-gray-600">{department.description}</p>
 
