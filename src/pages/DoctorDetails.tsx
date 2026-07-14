@@ -17,7 +17,7 @@ function DoctorDetails() {
           <img
             src={doctor.image}
             alt={doctor.name}
-            className="rounded-xl w-full h-96 object-cover"
+            className="rounded-xl w-full h-auto max-h-80 object-contain"
           />
 
           <div>

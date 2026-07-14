@@ -3,7 +3,7 @@ export const doctors = [
     id: 1,
     name: "Нурдин Усупбеков",
     position: "Директор, хирург",
-    department: "Хирургическое отделение",
+    department: "Административное отделение",
     experience: "30 лет",
     education: "Кыргызский государственный медицинский университет",
     image: "/doctors/doctor1.jpg",

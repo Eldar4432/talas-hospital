@@ -6,13 +6,18 @@ type Doctor = {
   position: string;
   experience: string;
   education: string;
+  image: string;
 };
 
 function DoctorsCard({ doctor }: { doctor: Doctor }) {
   return (
     <div className="bg-white rounded-xl shadow p-6 text-center">
-      <div className="w-24 h-24 mx-auto bg-gray-200 rounded-full flex items-center justify-center">
-        Фото
+      <div className="w-48 h-48 mx-auto bg-gray-200 rounded-full overflow-hidden">
+        <img
+          src={doctor.image}
+          alt={doctor.name}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       <h3 className="mt-5 text-xl font-bold">{doctor.name}</h3>
