@@ -1,4 +1,6 @@
-import hospitalImage from "../assets/images/hospital.jpg";
+import { Link } from "react-router-dom";
+import hospitalImage from "../assets/hospital.jpg";
+import { hospital } from "../data/hospital";
 
 function Hero() {
   return (
@@ -11,18 +13,29 @@ function Hero() {
 
       <div className="absolute inset-0 bg-blue-900/60 flex items-center">
         <div className="max-w-7xl mx-auto px-6 text-white">
-          <h1 className="text-5xl font-bold">
-            Таласская областная объединённая больница
+          <h1 className="text-4xl md:text-5xl font-bold max-w-4xl">
+            {hospital.name}
           </h1>
 
-          <p className="mt-6 text-xl max-w-2xl">
-            Качественная медицинская помощь, современные технологии и забота о
-            здоровье каждого пациента.
+          <p className="mt-6 text-lg md:text-xl max-w-2xl">
+            {hospital.description}
           </p>
 
-          <button className="mt-8 bg-white text-blue-800 px-8 py-3 rounded-lg font-bold">
-            Записаться на прием
-          </button>
+          <div className="mt-8 flex gap-4 flex-wrap">
+            <Link
+              to="/contacts"
+              className="bg-white text-blue-800 px-8 py-3 rounded-lg font-bold"
+            >
+              Записаться на прием
+            </Link>
+
+            <Link
+              to="/doctors"
+              className="border border-white px-8 py-3 rounded-lg font-bold"
+            >
+              Наши врачи
+            </Link>
+          </div>
         </div>
       </div>
     </section>
