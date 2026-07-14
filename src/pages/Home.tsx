@@ -1,5 +1,6 @@
 import Departments from "../components/Departments";
 import Doctors from "../components/Doctors";
+import News from "../components/News";
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
       </section>
       <Departments />
       <Doctors />
+      <News />
     </main>
   );
 }
