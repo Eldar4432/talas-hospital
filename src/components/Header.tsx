@@ -15,8 +15,8 @@ function Header() {
           <Link to="/about">О больнице</Link>{" "}
           <Link to="/departments">Отделения</Link>
           <Link to="/doctors">Врачи</Link>
-          <a href="/news">Новости</a>
-          <a href="/contacts">Контакты</a>
+          <Link to="/news">Новости</Link>
+          <Link to="/contacts">Контакты</Link>
         </nav>
       </div>
     </header>
