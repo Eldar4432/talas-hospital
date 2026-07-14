@@ -1,28 +1,31 @@
 export const doctors = [
   {
     id: 1,
-    name: "Иван Иванов",
-    position: "Хирург",
+    name: "Нурдин Усупбеков",
+    position: "Директор, хирург",
     department: "Хирургическое отделение",
-    experience: "15 лет",
+    experience: "30 лет",
     education: "Кыргызский государственный медицинский университет",
+    image: "/doctors/doctor1.jpg",
   },
 
   {
     id: 2,
-    name: "Айгуль Садыкова",
-    position: "Кардиолог",
-    department: "Терапевтическое отделение",
-    experience: "12 лет",
-    education: "Кыргызский государственный медицинский университет",
+    name: "Эльдар Айбеков",
+    position: "IT-специалист, инженер медицинского оборудования",
+    department: "IT-отделение",
+    experience: "5 лет",
+    education: "Кыргызский государственный технический университет",
+    image: "/doctors/doctor2.jpg",
   },
 
   {
     id: 3,
-    name: "Бакыт Токтосунов",
+    name: "Умар Жусумамбектов",
     position: "Терапевт",
     department: "Терапевтическое отделение",
     experience: "10 лет",
     education: "Кыргызский государственный медицинский университет",
+    image: "/doctors/doctor3.jpg",
   },
 ];
