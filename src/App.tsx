@@ -1,10 +1,12 @@
+import Header from "./components/Header";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-blue-700">
-        Таласская областная объединённая больница
-      </h1>
-    </div>
+    <>
+      <Header />
+      <Home />
+    </>
   );
 }
 
