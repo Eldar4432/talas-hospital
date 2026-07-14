@@ -1,3 +1,6 @@
+import Departments from "../components/Departments";
+import Doctors from "../components/Doctors";
+
 function Home() {
   return (
     <main>
@@ -17,6 +20,8 @@ function Home() {
           </button>
         </div>
       </section>
+      <Departments />
+      <Doctors />
     </main>
   );
 }
