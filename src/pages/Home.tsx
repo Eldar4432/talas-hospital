@@ -1,7 +1,7 @@
-import Departments from "../components/Departments";
-import Doctors from "../components/Doctors";
-import News from "../components/News";
-import Contacts from "../components/Contacts";
+import DepartmentsCard from "../components/DepartmentsCard";
+import DoctorsCard from "../components/DoctorsCard";
+import NewsCard from "../components/NewsCard";
+import ContactsCard from "../components/ContactsCard";
 
 function Home() {
   return (
@@ -22,10 +22,10 @@ function Home() {
           </button>
         </div>
       </section>
-      <Departments />
-      <Doctors />
-      <News />
-      <Contacts />
+      <DepartmentsCard />
+      <DoctorsCard />
+      <NewsCard />
+      <ContactsCard />
     </main>
   );
 }

@@ -4,6 +4,8 @@ import Header from "./components/Header";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Departments from "./pages/Departments";
+import Doctors from "./pages/Doctors";
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route path="/about" element={<About />} />
+        <Route path="/departments" element={<Departments />} />
+
+        <Route path="/doctors" element={<Doctors />} />
       </Routes>
     </BrowserRouter>
   );

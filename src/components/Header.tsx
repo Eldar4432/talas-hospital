@@ -13,8 +13,8 @@ function Header() {
         <nav className="flex gap-6 text-gray-700">
           <Link to="/">Главная</Link>
           <Link to="/about">О больнице</Link>{" "}
-          <a href="/departments">Отделения</a>
-          <a href="/doctors">Врачи</a>
+          <Link to="/departments">Отделения</Link>
+          <Link to="/doctors">Врачи</Link>
           <a href="/news">Новости</a>
           <a href="/contacts">Контакты</a>
         </nav>
