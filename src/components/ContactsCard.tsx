@@ -18,19 +18,21 @@ function Contacts() {
           <div className="bg-white p-6 rounded-xl shadow">
             <h3 className="text-xl font-bold text-blue-700">Телефон</h3>
 
-            <p className="mt-3 text-gray-600">Регистратура: +996 XXX XXX XXX</p>
+            <p className="mt-3 text-gray-600">
+              Регистратура: +996 997 704 007{" "}
+            </p>
 
             <p className="text-gray-600">
-              Приемное отделение: +996 XXX XXX XXX
+              Приемное отделение: +996 997 704 007
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow">
             <h3 className="text-xl font-bold text-blue-700">Режим работы</h3>
 
-            <p className="mt-3 text-gray-600">Понедельник - Пятница</p>
+            <p className="mt-3 text-gray-600">Понедельник - Суббота</p>
 
-            <p className="text-gray-600">08:00 - 18:00</p>
+            <p className="text-gray-600">09:00 - 18:00</p>
           </div>
         </div>
 
