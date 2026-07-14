@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import hospitalImage from "../assets/hospital.jpg";
+import hospitalImage from "../assets/images/hospital.jpg";
 import { hospital } from "../data/hospital";
 
 function Hero() {
