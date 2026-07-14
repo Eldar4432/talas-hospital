@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { doctors } from "../data/doctors";
 
 function Appointment() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,10 @@ function Appointment() {
     date: "",
     message: "",
   });
+
+  const filteredDoctors = doctors.filter(
+    (doctor) => doctor.department === formData.department,
+  );
 
   function handleChange(
     e: React.ChangeEvent<
@@ -87,11 +92,11 @@ function Appointment() {
           >
             <option value="">Выберите врача</option>
 
-            <option>Хирург</option>
-
-            <option>Терапевт</option>
-
-            <option>Педиатр</option>
+            {filteredDoctors.map((doctor) => (
+              <option key={doctor.id} value={doctor.name}>
+                {doctor.name} — {doctor.position}
+              </option>
+            ))}
           </select>
 
           <input
