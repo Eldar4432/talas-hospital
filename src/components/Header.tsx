@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header className="bg-white shadow-md">
@@ -9,8 +11,8 @@ function Header() {
         </div>
 
         <nav className="flex gap-6 text-gray-700">
-          <a href="/">Главная</a>
-          <a href="/about">О больнице</a>
+          <Link to="/">Главная</Link>
+          <Link to="/about">О больнице</Link>{" "}
           <a href="/departments">Отделения</a>
           <a href="/doctors">Врачи</a>
           <a href="/news">Новости</a>
