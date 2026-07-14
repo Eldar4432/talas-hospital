@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 type Doctor = {
+  id: number;
   name: string;
   position: string;
   experience: string;
+  education: string;
 };
 
 function DoctorsCard({ doctor }: { doctor: Doctor }) {
@@ -17,9 +21,14 @@ function DoctorsCard({ doctor }: { doctor: Doctor }) {
 
       <p className="text-gray-600 mt-2">Стаж: {doctor.experience}</p>
 
-      <button className="mt-5 bg-blue-700 text-white px-5 py-2 rounded-lg">
+      <p className="text-gray-600 mt-2">Образование: {doctor.education}</p>
+
+      <Link
+        to={`/doctors/${doctor.id}`}
+        className="mt-5 inline-block bg-blue-700 text-white px-5 py-2 rounded-lg"
+      >
         Подробнее
-      </button>
+      </Link>
     </div>
   );
 }

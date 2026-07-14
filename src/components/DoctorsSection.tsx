@@ -1,4 +1,4 @@
-import DoctorsCard from "./DoctorCard";
+import DoctorCard from "./DoctorCard";
 import { doctors } from "../data/doctors";
 
 function DoctorsSection() {
@@ -11,7 +11,7 @@ function DoctorsSection() {
 
         <div className="grid md:grid-cols-3 gap-8 mt-10">
           {doctors.slice(0, 3).map((doctor) => (
-            <DoctorsCard key={doctor.name} doctor={doctor} />
+            <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
       </div>

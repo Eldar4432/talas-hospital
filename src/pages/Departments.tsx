@@ -1,11 +1,5 @@
-const departments = [
-  "Хирургическое отделение",
-  "Терапевтическое отделение",
-  "Реанимация",
-  "Родильное отделение",
-  "Детское отделение",
-  "Приемное отделение",
-];
+import DepartmentCard from "../components/DepartmentCard";
+import { departments } from "../data/departments";
 
 function Departments() {
   return (
@@ -17,18 +11,7 @@ function Departments() {
 
         <div className="grid md:grid-cols-3 gap-6 mt-10">
           {departments.map((department) => (
-            <div
-              key={department}
-              className="bg-white shadow rounded-xl p-6 border"
-            >
-              <h2 className="text-xl font-bold text-blue-700">{department}</h2>
-
-              <p className="mt-3 text-gray-600">
-                Подробная информация об отделении, врачах и медицинских услугах.
-              </p>
-
-              <button className="mt-4 text-blue-700">Подробнее →</button>
-            </div>
+            <DepartmentCard key={department.title} department={department} />
           ))}
         </div>
       </div>
