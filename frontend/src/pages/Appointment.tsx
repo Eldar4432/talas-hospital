@@ -1,99 +1,90 @@
-import { useState } from "react";
-import { doctors } from "../data/doctors";
+import { useEffect, useState } from "react";
+import { api } from "../api/api";
+
+interface Doctor {
+  id: number;
+  name: string;
+  position: string;
+}
 
 function Appointment() {
-  const [formData, setFormData] = useState({
-    name: "",
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
+
+  const [form, setForm] = useState({
+    patient_name: "",
     phone: "",
-    department: "",
-    doctor: "",
-    date: "",
+    doctor_id: "",
+    appointment_date: "",
     message: "",
   });
 
-  const filteredDoctors = doctors.filter(
-    (doctor) => doctor.department === formData.department,
-  );
+  useEffect(() => {
+    api.get("/doctors").then((res) => setDoctors(res.data));
+  }, []);
 
-  function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(formData);
+    await api.post("/appointments", {
+      ...form,
+      doctor_id: Number(form.doctor_id),
+    });
 
-    alert("Заявка отправлена!");
-  }
+    alert("Запись успешно отправлена");
+
+    setForm({
+      patient_name: "",
+      phone: "",
+      doctor_id: "",
+      appointment_date: "",
+      message: "",
+    });
+  };
 
   return (
     <section className="py-16">
-      <div className="max-w-3xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-blue-800 text-center">
-          Запись на прием
-        </h1>
+      <div className="max-w-xl mx-auto px-6">
+        <h1 className="text-4xl font-bold text-blue-800">Запись на прием</h1>
 
-        <p className="text-center mt-4 text-gray-600">
-          Заполните форму, и мы свяжемся с вами.
-        </p>
-
-        <form
-          onSubmit={handleSubmit}
-          className="mt-10 space-y-5 bg-white shadow-lg rounded-xl p-8 border"
-        >
+        <form onSubmit={handleSubmit} className="mt-8 space-y-4">
           <input
-            type="text"
-            name="name"
-            placeholder="ФИО"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3"
-            required
+            className="w-full border p-3 rounded"
+            placeholder="Ваше имя"
+            value={form.patient_name}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                patient_name: e.target.value,
+              })
+            }
           />
 
           <input
-            type="tel"
-            name="phone"
+            className="w-full border p-3 rounded"
             placeholder="Телефон"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3"
-            required
+            value={form.phone}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                phone: e.target.value,
+              })
+            }
           />
 
           <select
-            name="department"
-            value={formData.department}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3"
-          >
-            <option value="">Выберите отделение</option>
-
-            <option>Хирургическое отделение</option>
-
-            <option>Терапевтическое отделение</option>
-
-            <option>Детское отделение</option>
-          </select>
-
-          <select
-            name="doctor"
-            value={formData.doctor}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3"
+            className="w-full border p-3 rounded"
+            value={form.doctor_id}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                doctor_id: e.target.value,
+              })
+            }
           >
             <option value="">Выберите врача</option>
 
-            {filteredDoctors.map((doctor) => (
-              <option key={doctor.id} value={doctor.name}>
+            {doctors.map((doctor) => (
+              <option key={doctor.id} value={doctor.id}>
                 {doctor.name} — {doctor.position}
               </option>
             ))}
@@ -101,25 +92,30 @@ function Appointment() {
 
           <input
             type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3"
+            className="w-full border p-3 rounded"
+            value={form.appointment_date}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                appointment_date: e.target.value,
+              })
+            }
           />
 
           <textarea
-            name="message"
-            placeholder="Дополнительная информация"
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3 h-32"
+            className="w-full border p-3 rounded"
+            placeholder="Комментарий"
+            value={form.message}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                message: e.target.value,
+              })
+            }
           />
 
-          <button
-            type="submit"
-            className="w-full bg-blue-700 text-white py-3 rounded-lg font-bold hover:bg-blue-800"
-          >
-            Отправить заявку
+          <button className="bg-blue-700 text-white px-6 py-3 rounded">
+            Записаться
           </button>
         </form>
       </div>

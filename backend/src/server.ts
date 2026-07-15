@@ -4,6 +4,7 @@ import "./database/db";
 import doctorsRouter from "./routes/doctors";
 import departmentsRouter from "./routes/departments";
 import newsRouter from "./routes/news";
+import appoinmentsRouter from "./routes/appointments";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use("/api/doctors", doctorsRouter);
 app.use("/api/departments", departmentsRouter);
 app.use("/api/news", newsRouter);
+app.use("/api/appointments", appoinmentsRouter);
 
 app.get("/", (req, res) => {
   res.json({
