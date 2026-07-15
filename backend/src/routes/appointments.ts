@@ -3,6 +3,33 @@ import { pool } from "../database/db";
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT 
+        appointments.id,
+        appointments.patient_name,
+        appointments.phone,
+        appointments.appointment_date,
+        appointments.message,
+        doctors.name AS doctor_name,
+        doctors.position
+      FROM appointments
+      LEFT JOIN doctors
+      ON appointments.doctor_id = doctors.id
+      ORDER BY appointments.created_at DESC
+    `);
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Database error",
+    });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const { patient_name, phone, doctor_id, appointment_date, message } =
