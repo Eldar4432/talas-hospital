@@ -12,6 +12,7 @@ import Contacts from "./pages/Contacts";
 import DoctorDetails from "./pages/DoctorDetails";
 import DepartmentDetails from "./pages/DepartmentDetails";
 import Appointment from "./pages/Appointment";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/appointment" element={<Appointment />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
       </Routes>
 
       <Footer />
