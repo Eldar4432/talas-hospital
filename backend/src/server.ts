@@ -2,12 +2,14 @@ import express from "express";
 import cors from "cors";
 import "./database/db";
 import doctorsRouter from "./routes/doctors";
+import departmentsRouter from "./routes/departments";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/api/doctors", doctorsRouter);
+app.use("/api/departments", departmentsRouter);
 
 app.get("/", (req, res) => {
   res.json({
