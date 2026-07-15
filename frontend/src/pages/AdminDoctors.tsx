@@ -11,6 +11,7 @@ interface Doctor {
 
 function AdminDoctors() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [image, setImage] = useState<File | null>(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -31,7 +32,20 @@ function AdminDoctors() {
   const addDoctor = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await api.post("/doctors", form);
+    // await api.post("/doctors", form);
+
+    const data = new FormData();
+
+    data.append("name", form.name);
+    data.append("position", form.position);
+    data.append("experience", form.experience);
+    data.append("education", form.education);
+
+    if (image) {
+      data.append("image", image);
+    }
+
+    await api.post("/doctors", data);
 
     setForm({
       name: "",
@@ -82,6 +96,11 @@ function AdminDoctors() {
             placeholder="Образование"
             value={form.education}
             onChange={(e) => setForm({ ...form, education: e.target.value })}
+          />
+
+          <input
+            type="file"
+            onChange={(e) => setImage(e.target.files?.[0] || null)}
           />
 
           <button className="bg-blue-700 text-white px-5 py-2 rounded">

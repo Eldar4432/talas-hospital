@@ -6,6 +6,7 @@ import departmentsRouter from "./routes/departments";
 import newsRouter from "./routes/news";
 import appoinmentsRouter from "./routes/appointments";
 import authRouter from "./routes/auth";
+import path from "path";
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use("/api/departments", departmentsRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/appointments", appoinmentsRouter);
 app.use("/api/auth", authRouter);
+app.use(express.json());
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.get("/", (req, res) => {
   res.json({

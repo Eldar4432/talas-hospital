@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { pool } from "../database/db";
+import { upload } from "../middleware/upload";
 
 const router = Router();
 
@@ -17,23 +18,24 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("image"), async (req, res) => {
   try {
-    const { name, position, experience, education, image } = req.body;
+    const { name, position, experience, education } = req.body;
+    const image = req.file ? `/uploads/doctors/${req.file.filename}` : "";
 
     const result = await pool.query(
       `
-      INSERT INTO doctors
-      (
-        name,
-        position,
-        experience,
-        education,
-        image
-      )
-      VALUES ($1,$2,$3,$4,$5)
-      RETURNING *
-      `,
+INSERT INTO doctors
+(
+name,
+position,
+experience,
+education,
+image
+)
+VALUES ($1,$2,$3,$4,$5)
+RETURNING *
+`,
       [name, position, experience, education, image],
     );
 
