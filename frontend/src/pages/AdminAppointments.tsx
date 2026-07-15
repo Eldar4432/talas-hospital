@@ -8,10 +8,13 @@ interface Appointment {
   appointment_date: string;
   message: string;
   doctor_name: string;
+  status: string;
 }
 
 function AdminAppointments() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+
+  const [statuses, setStatuses] = useState<Record<number, string>>({});
 
   const loadAppointments = async () => {
     const res = await api.get("/appointments");
@@ -25,6 +28,21 @@ function AdminAppointments() {
 
   const deleteAppointment = async (id: number) => {
     await api.delete(`/appointments/${id}`);
+
+    loadAppointments();
+  };
+
+  const changeStatus = (id: number, status: string) => {
+    setStatuses({
+      ...statuses,
+      [id]: status,
+    });
+  };
+
+  const saveStatus = async (id: number) => {
+    await api.put(`/appointments/${id}`, {
+      status: statuses[id],
+    });
 
     loadAppointments();
   };
@@ -47,6 +65,8 @@ function AdminAppointments() {
 
               <th className="border p-2">Сообщение</th>
 
+              <th className="border p-2">Статус</th>
+
               <th className="border p-2">Действие</th>
             </tr>
           </thead>
@@ -63,6 +83,27 @@ function AdminAppointments() {
                 <td className="border p-2">{item.appointment_date}</td>
 
                 <td className="border p-2">{item.message}</td>
+
+                <td className="border p-2">
+                  <select
+                    value={statuses[item.id] ?? item.status}
+                    onChange={(e) => changeStatus(item.id, e.target.value)}
+                    className="border p-1 rounded"
+                  >
+                    <option value="Новая">Новая</option>
+
+                    <option value="Подтверждена">Подтверждена</option>
+
+                    <option value="Завершена">Завершена</option>
+                  </select>
+
+                  <button
+                    onClick={() => saveStatus(item.id)}
+                    className="bg-green-600 text-white px-3 py-1 rounded ml-2"
+                  >
+                    Сохранить
+                  </button>
+                </td>
 
                 <td className="border p-2">
                   <button
