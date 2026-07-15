@@ -14,6 +14,7 @@ import DepartmentDetails from "./pages/DepartmentDetails";
 import Appointment from "./pages/Appointment";
 import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
+import AdminDoctors from "./pages/AdminDoctors";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/doctors" element={<AdminDoctors />} />
       </Routes>
 
       <Footer />

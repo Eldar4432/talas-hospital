@@ -17,4 +17,52 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const { name, position, experience, education, image } = req.body;
+
+    const result = await pool.query(
+      `
+      INSERT INTO doctors
+      (
+        name,
+        position,
+        experience,
+        education,
+        image
+      )
+      VALUES ($1,$2,$3,$4,$5)
+      RETURNING *
+      `,
+      [name, position, experience, education, image],
+    );
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Database error",
+    });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await pool.query("DELETE FROM doctors WHERE id=$1", [id]);
+
+    res.json({
+      message: "Doctor deleted",
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Database error",
+    });
+  }
+});
+
 export default router;
