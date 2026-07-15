@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { pool } from "../database/db";
 import uploadNews from "../middleware/uploadNews";
+import { authMiddleware } from "../middleware/authMiddleWare";
 
 const router = Router();
 
@@ -26,15 +27,19 @@ router.get("/", async (req, res) => {
 });
 
 // Добавить новость
-router.post("/", uploadNews.single("image"), async (req, res) => {
-  try {
-    const { title, date, text } = req.body;
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file);
+router.post(
+  "/",
+  authMiddleware,
+  uploadNews.single("image"),
+  async (req, res) => {
+    try {
+      const { title, date, text } = req.body;
+      console.log("BODY:", req.body);
+      console.log("FILE:", req.file);
 
-    const image = req.file ? `/uploads/news/${req.file.filename}` : null;
-    const result = await pool.query(
-      `
+      const image = req.file ? `/uploads/news/${req.file.filename}` : null;
+      const result = await pool.query(
+        `
       INSERT INTO news
       (
         title,
@@ -46,20 +51,21 @@ router.post("/", uploadNews.single("image"), async (req, res) => {
       ($1,$2,$3,$4)
       RETURNING *
       `,
-      [title, date, text, image],
-    );
+        [title, date, text, image],
+      );
 
-    res.json(result.rows[0]);
-  } catch (error) {
-    console.error(error);
+      res.json(result.rows[0]);
+    } catch (error) {
+      console.error(error);
 
-    res.status(500).json({
-      message: "Database error",
-    });
-  }
-});
+      res.status(500).json({
+        message: "Database error",
+      });
+    }
+  },
+);
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -82,7 +88,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
 
