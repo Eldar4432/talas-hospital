@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import AdminDoctors from "./pages/AdminDoctors";
 import AdminNews from "./pages/AdminNews";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -35,8 +36,22 @@ function App() {
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/doctors" element={<AdminDoctors />} />
-        <Route path="/admin/news" element={<AdminNews />} />
+        <Route
+          path="/admin/doctors"
+          element={
+            <ProtectedRoute>
+              <AdminDoctors />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/news"
+          element={
+            <ProtectedRoute>
+              <AdminNews />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
 
