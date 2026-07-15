@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import DepartmentCard from "../components/DepartmentCard";
-import { departments } from "../data/departments";
+import type { Department } from "../api/departmentsApi";
+import { getDepartments } from "../api/departmentsApi";
 
 function Departments() {
+  const [departments, setDepartments] = useState<Department[]>([]);
+
+  useEffect(() => {
+    getDepartments()
+      .then((data) => setDepartments(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-6">
