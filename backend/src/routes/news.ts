@@ -82,4 +82,34 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { title, date, text, image } = req.body;
+
+    const result = await pool.query(
+      `
+      UPDATE news
+      SET
+        title=$1,
+        date=$2,
+        text=$3,
+        image=$4
+      WHERE id=$5
+      RETURNING *
+      `,
+      [title, date, text, image, id],
+    );
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Database error",
+    });
+  }
+});
+
 export default router;

@@ -11,6 +11,7 @@ interface News {
 
 function AdminNews() {
   const [news, setNews] = useState<News[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   const [form, setForm] = useState({
     title: "",
@@ -31,6 +32,28 @@ function AdminNews() {
     loadNews();
   };
 
+  const updateNews = async () => {
+    if (!editingId) return;
+
+    await api.put(`/news/${editingId}`, {
+      title: form.title,
+      date: form.date,
+      text: form.text,
+      image: "",
+    });
+
+    setEditingId(null);
+
+    setForm({
+      title: "",
+      date: "",
+      text: "",
+      image: null,
+    });
+
+    loadNews();
+  };
+
   useEffect(() => {
     loadNews();
   }, []);
@@ -45,6 +68,12 @@ function AdminNews() {
     data.append("date", form.date);
 
     data.append("text", form.text);
+
+    if (editingId) {
+      await updateNews();
+
+      return;
+    }
 
     if (form.image) {
       data.append("image", form.image);
@@ -117,7 +146,7 @@ function AdminNews() {
         />
 
         <button className="bg-blue-700 text-white px-5 py-2 rounded">
-          Добавить новость
+          {editingId ? "Сохранить изменения" : "Добавить новость"}
         </button>
       </form>
 
@@ -141,6 +170,21 @@ function AdminNews() {
               className="bg-red-600 text-white px-4 py-2 rounded mt-3"
             >
               Удалить
+            </button>
+            <button
+              onClick={() => {
+                setEditingId(item.id);
+
+                setForm({
+                  title: item.title,
+                  date: item.date,
+                  text: item.text,
+                  image: null,
+                });
+              }}
+              className="bg-yellow-500 text-white px-4 py-2 rounded mt-3 mr-2"
+            >
+              Редактировать
             </button>
           </div>
         ))}
