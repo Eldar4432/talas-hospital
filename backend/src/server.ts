@@ -19,7 +19,6 @@ app.use("/api/appointments", appoinmentsRouter);
 app.use("/api/auth", authRouter);
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
-
 app.get("/", (req, res) => {
   res.json({
     message: "Talas Hospital API работает",

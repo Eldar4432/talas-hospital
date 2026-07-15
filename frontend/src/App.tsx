@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Departments from "./pages/Departments";
 import Doctors from "./pages/Doctors";
-import News from "./pages/News";
+import News from "./pages/News.tsx";
 import Contacts from "./pages/Contacts";
 import DoctorDetails from "./pages/DoctorDetails";
 import DepartmentDetails from "./pages/DepartmentDetails";
@@ -15,6 +15,7 @@ import Appointment from "./pages/Appointment";
 import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import AdminDoctors from "./pages/AdminDoctors";
+import AdminNews from "./pages/AdminNews";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/doctors" element={<AdminDoctors />} />
+        <Route path="/admin/news" element={<AdminNews />} />
       </Routes>
 
       <Footer />
