@@ -12,6 +12,7 @@ interface Doctor {
 function AdminDoctors() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [image, setImage] = useState<File | null>(null);
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -64,6 +65,24 @@ function AdminDoctors() {
     loadDoctors();
   };
 
+  const updateDoctor = async () => {
+    if (!editingId) return;
+
+    await api.put(`/doctors/${editingId}`, form);
+
+    setEditingId(null);
+
+    setForm({
+      name: "",
+      position: "",
+      experience: "",
+      education: "",
+      image: "",
+    });
+
+    loadDoctors();
+  };
+
   return (
     <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
@@ -104,7 +123,7 @@ function AdminDoctors() {
           />
 
           <button className="bg-blue-700 text-white px-5 py-2 rounded">
-            Добавить врача
+            {editingId ? "Сохранить изменения" : "Добавить врача"}
           </button>
         </form>
 
@@ -114,6 +133,23 @@ function AdminDoctors() {
               <h2 className="font-bold">{doctor.name}</h2>
 
               <p>{doctor.position}</p>
+
+              <button
+                onClick={() => {
+                  setEditingId(doctor.id);
+
+                  setForm({
+                    name: doctor.name,
+                    position: doctor.position,
+                    experience: doctor.experience,
+                    education: doctor.education,
+                    image: "",
+                  });
+                }}
+                className="text-blue-600 mr-4"
+              >
+                Редактировать
+              </button>
 
               <button
                 onClick={() => deleteDoctor(doctor.id)}
