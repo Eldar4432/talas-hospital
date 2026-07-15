@@ -5,6 +5,7 @@ import doctorsRouter from "./routes/doctors";
 import departmentsRouter from "./routes/departments";
 import newsRouter from "./routes/news";
 import appoinmentsRouter from "./routes/appointments";
+import authRouter from "./routes/auth";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use("/api/doctors", doctorsRouter);
 app.use("/api/departments", departmentsRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/appointments", appoinmentsRouter);
+app.use("/api/auth", authRouter);
 
 app.get("/", (req, res) => {
   res.json({
