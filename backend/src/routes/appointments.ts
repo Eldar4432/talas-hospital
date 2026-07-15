@@ -1,24 +1,27 @@
 import { Router } from "express";
 import { pool } from "../database/db";
+import { authMiddleware } from "../middleware/authMiddleWare";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+// Получить все заявки
+router.get("/", authMiddleware, async (req, res) => {
   try {
-    const result = await pool.query(`
+    const result = await pool.query(
+      `
       SELECT 
         appointments.id,
         appointments.patient_name,
         appointments.phone,
         appointments.appointment_date,
         appointments.message,
-        doctors.name AS doctor_name,
-        doctors.position
+        doctors.name AS doctor_name
       FROM appointments
       LEFT JOIN doctors
       ON appointments.doctor_id = doctors.id
       ORDER BY appointments.created_at DESC
-    `);
+      `,
+    );
 
     res.json(result.rows);
   } catch (error) {
@@ -30,28 +33,22 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+// Удалить заявку
+router.delete("/:id", authMiddleware, async (req, res) => {
   try {
-    const { patient_name, phone, doctor_id, appointment_date, message } =
-      req.body;
+    const { id } = req.params;
 
-    const result = await pool.query(
+    await pool.query(
       `
-      INSERT INTO appointments
-      (
-        patient_name,
-        phone,
-        doctor_id,
-        appointment_date,
-        message
-      )
-      VALUES ($1,$2,$3,$4,$5)
-      RETURNING *
+      DELETE FROM appointments
+      WHERE id=$1
       `,
-      [patient_name, phone, doctor_id, appointment_date, message],
+      [id],
     );
 
-    res.json(result.rows[0]);
+    res.json({
+      message: "Appointment deleted",
+    });
   } catch (error) {
     console.error(error);
 
