@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
+import { Link } from "react-router-dom";
 
 interface Appointment {
   id: number;
@@ -25,8 +26,6 @@ function Admin() {
           Административная панель
         </h1>
 
-        <h2 className="text-2xl mt-10 font-bold">Записи пациентов</h2>
-
         <div className="mt-6 space-y-4">
           {appointments.map((item) => (
             <div key={item.id} className="border rounded-lg p-5 shadow">
@@ -49,6 +48,7 @@ function Admin() {
               <p>
                 <b>Комментарий:</b> {item.message}
               </p>
+              <Link to="/admin/contacts">Контакты</Link>
             </div>
           ))}
         </div>

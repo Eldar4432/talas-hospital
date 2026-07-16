@@ -20,6 +20,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminAppointments from "./pages/AdminAppointments";
 import AdminDepartments from "./pages/AdminDepartments";
+import AdminContacts from "./pages/AdminContacts";
 
 function App() {
   return (
@@ -59,6 +60,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminAppointments />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/contacts"
+          element={
+            <ProtectedRoute>
+              <AdminContacts />
             </ProtectedRoute>
           }
         />

@@ -17,4 +17,33 @@ router.get("/", async (req, res) => {
   }
 });
 
+// изменить контакт
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { title, value } = req.body;
+
+    const result = await pool.query(
+      `
+      UPDATE contacts
+      SET
+        title=$1,
+        value=$2
+      WHERE id=$3
+      RETURNING *
+      `,
+      [title, value, id],
+    );
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Database error",
+    });
+  }
+});
+
 export default router;
