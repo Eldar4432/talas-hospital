@@ -53,13 +53,6 @@ function DoctorDetails() {
             <p className="mt-4">Опыт работы: {doctor.experience}</p>
 
             <p className="mt-4">Образование: {doctor.education}</p>
-
-            <Link
-              to="/appointment"
-              className="inline-block mt-8 bg-blue-700 text-white px-6 py-3 rounded-lg"
-            >
-              Записаться на прием
-            </Link>
           </div>
         </div>
       </div>

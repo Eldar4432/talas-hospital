@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import ContactCard from "../components/ContactCard";
-import { contacts } from "../data/contacts";
+import { getContacts } from "../api/contactsApi";
+import type { Contact } from "../api/contactsApi";
 
 function Contacts() {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+
+  useEffect(() => {
+    getContacts()
+      .then((data) => {
+        setContacts(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
@@ -9,7 +23,7 @@ function Contacts() {
 
         <div className="grid md:grid-cols-3 gap-6 mt-8">
           {contacts.map((contact) => (
-            <ContactCard key={contact.title} contact={contact} />
+            <ContactCard key={contact.id} contact={contact} />
           ))}
         </div>
 
