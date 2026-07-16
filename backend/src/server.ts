@@ -9,6 +9,7 @@ import authRouter from "./routes/auth";
 import path from "path";
 import contacts from "./routes/contacts";
 import documentsRouter from "./routes/documents";
+import hospitalInfoRouter from "./routes/hospitalIngo";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api/appointments", appoinmentsRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/contacts", contacts);
 app.use("/api/documents", documentsRouter);
+app.use("/api/hospital-info", hospitalInfoRouter);
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.get("/", (req, res) => {
