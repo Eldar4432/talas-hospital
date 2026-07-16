@@ -1,23 +1,49 @@
-import { useEffect, useState } from "react";
-import { api } from "../api/api";
-import { Link } from "react-router-dom";
-
-interface Appointment {
-  id: number;
-  patient_name: string;
-  phone: string;
-  doctor_name: string;
-  position: string;
-  appointment_date: string;
-  message: string;
-}
+import { Link, useNavigate } from "react-router-dom";
 
 function Admin() {
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    api.get("/appointments").then((res) => setAppointments(res.data));
-  }, []);
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/admin/login");
+  };
+
+  const menu = [
+    {
+      title: "Врачи",
+      description: "Добавление, редактирование и удаление врачей",
+      link: "/admin/doctors",
+      icon: "👨‍⚕️",
+    },
+
+    {
+      title: "Новости",
+      description: "Управление новостями больницы",
+      link: "/admin/news",
+      icon: "📰",
+    },
+
+    {
+      title: "Заявки",
+      description: "Просмотр обращений пациентов",
+      link: "/admin/appointments",
+      icon: "📩",
+    },
+
+    {
+      title: "О больнице",
+      description: "Информация, миссия, история",
+      link: "/admin/hospital-info",
+      icon: "🏥",
+    },
+
+    {
+      title: "Контакты",
+      description: "Телефон, адрес, график работы",
+      link: "/admin/contacts",
+      icon: "📞",
+    },
+  ];
 
   return (
     <section className="py-16">
@@ -26,31 +52,46 @@ function Admin() {
           Административная панель
         </h1>
 
-        <div className="mt-6 space-y-4">
-          {appointments.map((item) => (
-            <div key={item.id} className="border rounded-lg p-5 shadow">
-              <p>
-                <b>Пациент:</b> {item.patient_name}
-              </p>
+        <button
+          onClick={logout}
+          className="
+    bg-red-600
+    text-white
+    px-5
+    py-2
+    rounded-lg
+    "
+        >
+          Выйти
+        </button>
 
-              <p>
-                <b>Телефон:</b> {item.phone}
-              </p>
+        <p className="mt-3 text-gray-600">
+          Управление информацией сайта больницы
+        </p>
 
-              <p>
-                <b>Врач:</b> {item.doctor_name}({item.position})
-              </p>
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
+          {menu.map((item) => (
+            <Link
+              key={item.link}
+              to={item.link}
+              className="
+              border
+              rounded-xl
+              p-6
+              shadow
+              hover:shadow-lg
+              transition
+              bg-white
+              "
+            >
+              <div className="text-4xl">{item.icon}</div>
 
-              <p>
-                <b>Дата:</b> {item.appointment_date}
-              </p>
+              <h2 className="text-xl font-bold mt-4 text-blue-800">
+                {item.title}
+              </h2>
 
-              <p>
-                <b>Комментарий:</b> {item.message}
-              </p>
-              <Link to="/admin/contacts">Контакты</Link>
-              <Link to="/admin/documents">Документы</Link>
-            </div>
+              <p className="mt-2 text-gray-600">{item.description}</p>
+            </Link>
           ))}
         </div>
       </div>

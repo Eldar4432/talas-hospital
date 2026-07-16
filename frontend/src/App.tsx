@@ -24,6 +24,7 @@ import AdminDepartments from "./pages/AdminDepartments";
 import AdminContacts from "./pages/AdminContacts";
 import AdminDocuments from "./pages/AdminDocuments";
 import AdminHospitalInfo from "./pages/AdminHospitalInfo";
+import AdminLayout from "./components/AdminLayout.tsx";
 
 function App() {
   return (
@@ -42,64 +43,30 @@ function App() {
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/documents" element={<Documents />} />
-        <Route path="/admin" element={<Admin />} />
         <Route
-          path="/admin/doctors"
+          path="/admin"
           element={
             <ProtectedRoute>
-              <AdminDoctors />
+              <AdminLayout />
             </ProtectedRoute>
           }
-        />
-        <Route
-          path="/admin/news"
-          element={
-            <ProtectedRoute>
-              <AdminNews />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/appointments"
-          element={
-            <ProtectedRoute>
-              <AdminAppointments />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/contacts"
-          element={
-            <ProtectedRoute>
-              <AdminContacts />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/departments"
-          element={
-            <ProtectedRoute>
-              <AdminDepartments />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/documents"
-          element={
-            <ProtectedRoute>
-              <AdminDocuments />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/hospital-info"
-          element={
-            <ProtectedRoute>
-              <AdminHospitalInfo />
-            </ProtectedRoute>
-          }
-        />
+        >
+          <Route index element={<Admin />} />
 
+          <Route path="doctors" element={<AdminDoctors />} />
+
+          <Route path="news" element={<AdminNews />} />
+
+          <Route path="appointments" element={<AdminAppointments />} />
+
+          <Route path="contacts" element={<AdminContacts />} />
+
+          <Route path="departments" element={<AdminDepartments />} />
+
+          <Route path="documents" element={<AdminDocuments />} />
+
+          <Route path="hospital-info" element={<AdminHospitalInfo />} />
+        </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
 
