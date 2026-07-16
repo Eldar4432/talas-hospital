@@ -19,6 +19,7 @@ import AdminNews from "./pages/AdminNews";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminAppointments from "./pages/AdminAppointments";
+import AdminDepartments from "./pages/AdminDepartments";
 
 function App() {
   return (
@@ -58,6 +59,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminAppointments />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/departments"
+          element={
+            <ProtectedRoute>
+              <AdminDepartments />
             </ProtectedRoute>
           }
         />
