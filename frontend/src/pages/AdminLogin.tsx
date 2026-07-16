@@ -18,6 +18,7 @@ function AdminLogin() {
 
       localStorage.setItem("token", response.data.token);
 
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/admin");
     } catch (error) {
       alert("Неверный логин или пароль");

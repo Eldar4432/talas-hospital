@@ -2,7 +2,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 function AdminLayout() {
   const navigate = useNavigate();
-
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
   const menu = [
     {
       title: "Главная",
@@ -64,8 +64,8 @@ function AdminLayout() {
       <header className="bg-blue-800 text-white px-8 py-5 flex justify-between items-center">
         <div>
           <h1 className="text-xl font-bold">🏥 Панель управления больницей</h1>
-
-          <p className="text-sm text-blue-100">Администратор Эльдар Айбеков</p>
+          <p className="text-sm text-blue-100">{user.name}</p>
+          <p className="text-xs text-blue-200">{user.role}</p>{" "}
         </div>
         <button onClick={logout} className="bg-red-600 px-4 py-2 rounded-lg">
           Выйти

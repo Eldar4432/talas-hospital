@@ -3,8 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 function Admin() {
   const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
     navigate("/admin/login");
   };
 
@@ -22,12 +26,11 @@ function Admin() {
       link: "/admin/news",
       icon: "📰",
     },
-
     {
-      title: "Заявки",
-      description: "Просмотр обращений пациентов",
-      link: "/admin/appointments",
-      icon: "📩",
+      title: "Отделения",
+      description: "Управление отделениями больницы",
+      link: "/admin/departments",
+      icon: "🏢",
     },
 
     {
@@ -43,6 +46,12 @@ function Admin() {
       link: "/admin/contacts",
       icon: "📞",
     },
+    {
+      title: "Документы",
+      description: "Лицензии, приказы и официальные документы",
+      link: "/admin/documents",
+      icon: "📄",
+    },
   ];
 
   return (
@@ -51,6 +60,12 @@ function Admin() {
         <h1 className="text-4xl font-bold text-blue-800">
           Административная панель
         </h1>
+
+        <p className="mt-3 text-xl font-semibold">
+          Добро пожаловать, {user.name}
+        </p>
+
+        <p className="text-gray-500">Роль: {user.role}</p>
 
         <button
           onClick={logout}

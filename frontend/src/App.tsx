@@ -19,7 +19,6 @@ import AdminDoctors from "./pages/AdminDoctors";
 import AdminNews from "./pages/AdminNews";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminAppointments from "./pages/AdminAppointments";
 import AdminDepartments from "./pages/AdminDepartments";
 import AdminContacts from "./pages/AdminContacts";
 import AdminDocuments from "./pages/AdminDocuments";
@@ -56,8 +55,6 @@ function App() {
           <Route path="doctors" element={<AdminDoctors />} />
 
           <Route path="news" element={<AdminNews />} />
-
-          <Route path="appointments" element={<AdminAppointments />} />
 
           <Route path="contacts" element={<AdminContacts />} />
 
