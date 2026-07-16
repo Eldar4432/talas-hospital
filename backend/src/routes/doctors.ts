@@ -67,25 +67,52 @@ router.delete("/:id", async (req, res) => {
   }
 });
 // Редактировать врача
-router.put("/:id", async (req, res) => {
+// Редактировать врача
+router.put("/:id", upload.single("image"), async (req, res) => {
   try {
     const { id } = req.params;
 
     const { name, position, experience, education } = req.body;
 
-    const result = await pool.query(
-      `
+    let image;
+
+    if (req.file) {
+      image = `/uploads/doctors/${req.file.filename}`;
+    }
+
+    let query = `
       UPDATE doctors
       SET
         name = $1,
         position = $2,
         experience = $3,
         education = $4
-      WHERE id = $5
+    `;
+
+    const values = [name, position, experience, education];
+
+    if (image) {
+      query += `,
+        image = $5
+      `;
+
+      values.push(image);
+    }
+
+    query += `
+      WHERE id = $${values.length + 1}
       RETURNING *
-      `,
-      [name, position, experience, education, id],
-    );
+    `;
+
+    values.push(id);
+
+    const result = await pool.query(query, values);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        message: "Doctor not found",
+      });
+    }
 
     res.json(result.rows[0]);
   } catch (error) {
