@@ -7,9 +7,9 @@ function Header() {
       {/* Верхняя информация */}
       <div className="bg-blue-800 text-white text-sm">
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between">
-          <p>☎ Регистратура: +996 XXX XXX XXX</p>
+          <p>☎ Регистратура: +996 997 704 007</p>
 
-          <p>🕒 Пн-Пт: 08:00 - 18:00</p>
+          <p>🕒 Пн-Сб: 09:00 - 18:00</p>
         </div>
       </div>
 

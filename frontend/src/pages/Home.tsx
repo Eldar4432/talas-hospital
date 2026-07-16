@@ -17,7 +17,7 @@ function Home() {
       <NewsSection />
       <Doctors />
       <ContactsSection />
-      <DoctorsSection />
+      {/* <DoctorsSection /> */}
     </main>
   );
 }
