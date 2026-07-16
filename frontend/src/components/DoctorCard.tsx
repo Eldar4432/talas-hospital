@@ -1,81 +1,70 @@
-import { Link } from "react-router-dom";
-
 interface Doctor {
   id: number;
   name: string;
   position: string;
   experience: string;
   education: string;
-  specialization?: string;
-  department?: string;
-  biography?: string;
   image: string;
 }
 
-interface Props {
-  doctor: Doctor;
-}
+import { Link } from "react-router-dom";
 
-function DoctorCard({ doctor }: Props) {
+function DoctorCard({ doctor }: { doctor: Doctor }) {
   return (
     <div
       className="
       bg-white
       rounded-2xl
-      shadow
+      shadow-md
       overflow-hidden
+      border
       hover:shadow-xl
       transition
       "
     >
-      {/* Фото */}
-
-      <img
-        src={
-          doctor.image
-            ? `http://localhost:5000${doctor.image}`
-            : "/doctor-placeholder.jpg"
-        }
-        alt={doctor.name}
-        className="
-        w-full
-        h-72
-        object-cover
-        "
-      />
-
-      {/* Контент */}
+      <div className="h-72 bg-gray-100 flex items-center justify-center">
+        <img
+          src={
+            doctor.image
+              ? `http://localhost:5000${doctor.image}`
+              : "/doctor-placeholder.jpg"
+          }
+          alt={doctor.name}
+          className="
+          w-full
+          h-full
+          object-cover
+          "
+        />
+      </div>
 
       <div className="p-6">
         <h2 className="text-xl font-bold text-blue-800">{doctor.name}</h2>
 
-        <p className="mt-2 text-gray-700">{doctor.position}</p>
+        <p className="mt-2 text-blue-600 font-medium">{doctor.position}</p>
 
-        {doctor.specialization && (
-          <p className="mt-3 text-sm text-gray-600">
-            ⭐ {doctor.specialization}
+        <div className="mt-4 space-y-2 text-gray-600">
+          <p>
+            <span className="font-semibold">Опыт:</span> {doctor.experience}
           </p>
-        )}
 
-        {doctor.department && (
-          <p className="mt-2 text-sm text-gray-600">🏥 {doctor.department}</p>
-        )}
+          <p>
+            <span className="font-semibold">Образование:</span>{" "}
+            {doctor.education}
+          </p>
+        </div>
 
         <Link
           to={`/doctors/${doctor.id}`}
           className="
           inline-block
-          mt-6
-          bg-blue-700
-          text-white
-          px-5
-          py-2
-          rounded-lg
-          hover:bg-blue-800
-          transition
+          mt-5
+          text-blue-700
+          font-semibold
+          hover:underline
           "
         >
-          Подробнее
+          Подробнее →
         </Link>
       </div>
     </div>

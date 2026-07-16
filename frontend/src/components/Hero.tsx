@@ -34,13 +34,6 @@ function Hero() {
 
           <div className="mt-8 flex gap-4 flex-wrap">
             <Link
-              to="/appointment"
-              className="inline-block mt-8 bg-white text-blue-800 px-8 py-3 rounded-lg font-bold"
-            >
-              Записаться на прием
-            </Link>
-
-            <Link
               to="/doctors"
               className="border border-white px-8 py-3 rounded-lg font-bold"
             >
