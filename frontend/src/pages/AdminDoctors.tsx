@@ -8,6 +8,9 @@ interface Doctor {
   experience: string;
   education: string;
   image: string;
+  specialization: string;
+  department: string;
+  biography: string;
 }
 
 function AdminDoctors() {
@@ -20,6 +23,9 @@ function AdminDoctors() {
     position: "",
     experience: "",
     education: "",
+    specialization: "",
+    department: "",
+    biography: "",
   });
 
   const loadDoctors = async () => {
@@ -41,6 +47,9 @@ function AdminDoctors() {
     data.append("position", form.position);
     data.append("experience", form.experience);
     data.append("education", form.education);
+    data.append("specialization", form.specialization);
+    data.append("department", form.department);
+    data.append("biography", form.biography);
 
     if (image) {
       data.append("image", image);
@@ -65,6 +74,9 @@ function AdminDoctors() {
       position: doctor.position,
       experience: doctor.experience,
       education: doctor.education,
+      specialization: doctor.specialization || "",
+      department: doctor.department || "",
+      biography: doctor.biography || "",
     });
 
     setImage(null);
@@ -83,6 +95,9 @@ function AdminDoctors() {
       position: "",
       experience: "",
       education: "",
+      specialization: "",
+      department: "",
+      biography: "",
     });
 
     setImage(null);
@@ -144,6 +159,43 @@ function AdminDoctors() {
               setForm({
                 ...form,
                 education: e.target.value,
+              })
+            }
+          />
+
+          <input
+            className="border p-3 rounded w-full"
+            placeholder="Специализация"
+            value={form.specialization}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                specialization: e.target.value,
+              })
+            }
+          />
+
+          <input
+            className="border p-3 rounded w-full"
+            placeholder="Отделение"
+            value={form.department}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                department: e.target.value,
+              })
+            }
+          />
+
+          <textarea
+            className="border p-3 rounded w-full"
+            rows={5}
+            placeholder="Биография врача"
+            value={form.biography}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                biography: e.target.value,
               })
             }
           />

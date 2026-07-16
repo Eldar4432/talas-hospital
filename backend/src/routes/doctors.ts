@@ -42,7 +42,15 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", upload.single("image"), async (req, res) => {
   try {
-    const { name, position, experience, education } = req.body;
+    const {
+      name,
+      position,
+      experience,
+      education,
+      specialization,
+      department,
+      biography,
+    } = req.body;
     const image = req.file ? `/uploads/doctors/${req.file.filename}` : "";
 
     const result = await pool.query(
@@ -53,12 +61,24 @@ name,
 position,
 experience,
 education,
+specialization,
+department,
+biography,
 image
 )
 VALUES ($1,$2,$3,$4,$5)
 RETURNING *
 `,
-      [name, position, experience, education, image],
+      [
+        name,
+        position,
+        experience,
+        education,
+        specialization,
+        department,
+        biography,
+        image,
+      ],
     );
 
     res.json(result.rows[0]);
@@ -94,7 +114,15 @@ router.put("/:id", upload.single("image"), async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { name, position, experience, education } = req.body;
+    const {
+      name,
+      position,
+      experience,
+      education,
+      specialization,
+      department,
+      biography,
+    } = req.body;
 
     let image;
 
@@ -108,10 +136,21 @@ router.put("/:id", upload.single("image"), async (req, res) => {
         name = $1,
         position = $2,
         experience = $3,
-        education = $4
+        education = $4,
+        specialization = $5,
+        department = $6,
+        biography = $7
     `;
 
-    const values = [name, position, experience, education];
+    const values = [
+      name,
+      position,
+      experience,
+      education,
+      specialization,
+      department,
+      biography,
+    ];
 
     if (image) {
       query += `,
