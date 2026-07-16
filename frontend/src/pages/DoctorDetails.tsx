@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { api } from "../api/api";
 
 interface Doctor {
@@ -18,11 +18,9 @@ function DoctorDetails() {
 
   useEffect(() => {
     api
-      .get("/doctors")
+      .get(`/doctors/${id}`)
       .then((res) => {
-        const found = res.data.find((item: Doctor) => item.id === Number(id));
-
-        setDoctor(found || null);
+        setDoctor(res.data);
       })
       .catch(console.error);
   }, [id]);
@@ -47,12 +45,17 @@ function DoctorDetails() {
 
           <div>
             <h1 className="text-4xl font-bold text-blue-800">{doctor.name}</h1>
-
             <p className="mt-4 text-xl">{doctor.position}</p>
+            <div className="bg-gray-50 rounded-xl p-6 mt-6">
+              <h2 className="text-2xl font-bold text-blue-800">Опыт работы</h2>
 
-            <p className="mt-4">Опыт работы: {doctor.experience}</p>
+              <p className="mt-3">{doctor.experience}</p>
+            </div>{" "}
+            <div className="bg-blue-50 rounded-xl p-6 mt-8">
+              <h2 className="text-2xl font-bold text-blue-800">Образование</h2>
 
-            <p className="mt-4">Образование: {doctor.education}</p>
+              <p className="mt-3 text-gray-700">{doctor.education}</p>
+            </div>{" "}
           </div>
         </div>
       </div>

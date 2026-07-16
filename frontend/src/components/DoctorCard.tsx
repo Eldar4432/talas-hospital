@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 interface Doctor {
   id: number;
   name: string;
@@ -9,33 +7,66 @@ interface Doctor {
   image: string;
 }
 
+import { Link } from "react-router-dom";
+
 function DoctorCard({ doctor }: { doctor: Doctor }) {
   return (
-    <div className="rounded-xl shadow p-5 bg-white border">
-      <img
-        src={
-          doctor.image
-            ? `http://localhost:5000${doctor.image}`
-            : "/doctor-placeholder.jpg"
-        }
-        alt={doctor.name}
-        className="w-full h-64 object-cover rounded-lg"
-      />
+    <div
+      className="
+      bg-white
+      rounded-2xl
+      shadow-md
+      overflow-hidden
+      border
+      hover:shadow-xl
+      transition
+      "
+    >
+      <div className="h-72 bg-gray-100 flex items-center justify-center">
+        <img
+          src={
+            doctor.image
+              ? `http://localhost:5000${doctor.image}`
+              : "/doctor-placeholder.jpg"
+          }
+          alt={doctor.name}
+          className="
+          w-full
+          h-full
+          object-cover
+          "
+        />
+      </div>
 
-      <h2 className="text-xl font-bold mt-4">{doctor.name}</h2>
+      <div className="p-6">
+        <h2 className="text-xl font-bold text-blue-800">{doctor.name}</h2>
 
-      <p className="text-blue-700 mt-1">{doctor.position}</p>
+        <p className="mt-2 text-blue-600 font-medium">{doctor.position}</p>
 
-      <p className="mt-2">Опыт: {doctor.experience}</p>
+        <div className="mt-4 space-y-2 text-gray-600">
+          <p>
+            <span className="font-semibold">Опыт:</span> {doctor.experience}
+          </p>
 
-      <p className="text-gray-600 mt-2">{doctor.education}</p>
+          <p>
+            <span className="font-semibold">Образование:</span>{" "}
+            {doctor.education}
+          </p>
+        </div>
 
-      <Link
-        to={`/doctors/${doctor.id}`}
-        className="inline-block mt-5 bg-blue-700 text-white px-5 py-2 rounded-lg"
-      >
-        Подробнее
-      </Link>
+        <Link
+          to={`/doctors/${doctor.id}`}
+          className="
+          inline-block
+          mt-5
+          text-blue-700
+          font-semibold
+          hover:underline
+          "
+        >
+          Подробнее →
+        </Link>
+      </div>
     </div>
   );
 }
