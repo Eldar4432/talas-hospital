@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 import hospitalImage from "../assets/images/hospital.jpg";
-import { hospital } from "../data/hospital";
+import { useEffect, useState } from "react";
+import { getHospitalInfo } from "../api/hospitalInfoApi";
+import type { HospitalInfo } from "../api/hospitalInfoApi";
 
 function Hero() {
+  const [hospital, setHospital] = useState<HospitalInfo | null>(null);
+
+  useEffect(() => {
+    getHospitalInfo().then(setHospital).catch(console.error);
+  }, []);
+  if (!hospital) {
+    return null;
+  }
+
   return (
     <section className="relative">
       <img

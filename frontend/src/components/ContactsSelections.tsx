@@ -1,7 +1,17 @@
 import ContactCard from "./ContactCard";
-import { contacts } from "../data/contacts";
+import { useEffect, useState } from "react";
+import { getContacts } from "../api/contactsApi";
+import type { Contact } from "../api/contactsApi";
 
 function ContactsSection() {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+
+  useEffect(() => {
+    getContacts()
+      .then((data) => setContacts(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <section className="py-16 bg-blue-50">
       <div className="max-w-7xl mx-auto px-6">
