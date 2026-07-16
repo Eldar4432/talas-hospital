@@ -23,6 +23,7 @@ import AdminAppointments from "./pages/AdminAppointments";
 import AdminDepartments from "./pages/AdminDepartments";
 import AdminContacts from "./pages/AdminContacts";
 import AdminDocuments from "./pages/AdminDocuments";
+import AdminHospitalInfo from "./pages/AdminHospitalInfo";
 
 function App() {
   return (
@@ -90,6 +91,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin/hospital-info"
+          element={
+            <ProtectedRoute>
+              <AdminHospitalInfo />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/login" element={<Login />} />
       </Routes>
 

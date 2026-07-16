@@ -9,7 +9,7 @@ import authRouter from "./routes/auth";
 import path from "path";
 import contacts from "./routes/contacts";
 import documentsRouter from "./routes/documents";
-import hospitalInfoRouter from "./routes/hospitalIngo";
+import hospitalInfoRouter from "./routes/hospitalInfo";
 
 const app = express();
 
