@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import DepartmentCard from "./DepartmentCard";
 import { getDepartments } from "../api/departmentsApi";
 import type { Department } from "../api/departmentsApi";
@@ -11,17 +12,60 @@ function DepartmentsSection() {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-blue-800">
-          Наши отделения
-        </h2>
+        {/* Заголовок */}
 
-        <div className="grid md:grid-cols-4 gap-6 mt-10">
-          {departments.slice(0, 4).map((department) => (
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-800">
+            Наши отделения
+          </h2>
+
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            В структуру больницы входят специализированные отделения,
+            обеспечивающие диагностику, лечение и медицинское сопровождение
+            пациентов.
+          </p>
+        </div>
+
+        {/* Карточки */}
+
+        <div
+          className="
+          grid
+          md:grid-cols-3
+          gap-8
+          mt-10
+          "
+        >
+          {departments.slice(0, 3).map((department) => (
             <DepartmentCard key={department.id} department={department} />
           ))}
         </div>
+
+        {/* Кнопка */}
+
+        {departments.length > 3 && (
+          <div className="text-center mt-10">
+            <Link
+              to="/departments"
+              className="
+              inline-block
+              border
+              border-blue-700
+              text-blue-700
+              px-6
+              py-3
+              rounded-lg
+              hover:bg-blue-700
+              hover:text-white
+              transition
+              "
+            >
+              Все отделения
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
