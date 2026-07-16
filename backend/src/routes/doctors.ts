@@ -66,26 +66,25 @@ router.delete("/:id", async (req, res) => {
     });
   }
 });
-
+// Редактировать врача
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { name, position, experience, education, image } = req.body;
+    const { name, position, experience, education } = req.body;
 
     const result = await pool.query(
       `
       UPDATE doctors
       SET
-        name=$1,
-        position=$2,
-        experience=$3,
-        education=$4,
-        image=$5
-      WHERE id=$6
+        name = $1,
+        position = $2,
+        experience = $3,
+        education = $4
+      WHERE id = $5
       RETURNING *
       `,
-      [name, position, experience, education, image, id],
+      [name, position, experience, education, id],
     );
 
     res.json(result.rows[0]);
