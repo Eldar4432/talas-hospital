@@ -35,12 +35,17 @@ function AdminNews() {
   const updateNews = async () => {
     if (!editingId) return;
 
-    await api.put(`/news/${editingId}`, {
-      title: form.title,
-      date: form.date,
-      text: form.text,
-      image: "",
-    });
+    const data = new FormData();
+
+    data.append("title", form.title);
+    data.append("date", form.date);
+    data.append("text", form.text);
+
+    if (form.image) {
+      data.append("image", form.image);
+    }
+
+    await api.put(`/news/${editingId}`, data);
 
     setEditingId(null);
 
@@ -61,19 +66,16 @@ function AdminNews() {
   const addNews = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (editingId) {
+      await updateNews();
+      return;
+    }
+
     const data = new FormData();
 
     data.append("title", form.title);
-
     data.append("date", form.date);
-
     data.append("text", form.text);
-
-    if (editingId) {
-      await updateNews();
-
-      return;
-    }
 
     if (form.image) {
       data.append("image", form.image);
@@ -85,7 +87,7 @@ function AdminNews() {
       title: "",
       date: "",
       text: "",
-      image: null as File | null,
+      image: null,
     });
 
     loadNews();
@@ -186,6 +188,24 @@ function AdminNews() {
             >
               Редактировать
             </button>
+            {editingId && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingId(null);
+
+                  setForm({
+                    title: "",
+                    date: "",
+                    text: "",
+                    image: null,
+                  });
+                }}
+                className="bg-gray-500 text-white px-5 py-2 rounded ml-3"
+              >
+                Отмена
+              </button>
+            )}
           </div>
         ))}
       </div>
