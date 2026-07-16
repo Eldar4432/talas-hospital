@@ -65,18 +65,51 @@ router.post(
   },
 );
 
-router.delete("/:id", authMiddleware, async (req, res) => {
+// Редактировать новость
+router.put("/:id", uploadNews.single("image"), async (req, res) => {
   try {
     const { id } = req.params;
 
-    const result = await pool.query(
-      `
-      DELETE FROM news
-      WHERE id=$1
+    const { title, date, text } = req.body;
+
+    let image;
+
+    if (req.file) {
+      image = `/uploads/news/${req.file.filename}`;
+    }
+
+    let query = `
+      UPDATE news
+      SET
+        title = $1,
+        date = $2,
+        text = $3
+    `;
+
+    const values = [title, date, text];
+
+    if (image) {
+      query += `,
+        image = $4
+      `;
+
+      values.push(image);
+    }
+
+    query += `
+      WHERE id = $${values.length + 1}
       RETURNING *
-      `,
-      [id],
-    );
+    `;
+
+    values.push(id);
+
+    const result = await pool.query(query, values);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        message: "News not found",
+      });
+    }
 
     res.json(result.rows[0]);
   } catch (error) {
@@ -88,27 +121,16 @@ router.delete("/:id", authMiddleware, async (req, res) => {
   }
 });
 
-router.put("/:id", authMiddleware, async (req, res) => {
+// Удалить новость
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { title, date, text, image } = req.body;
+    await pool.query("DELETE FROM news WHERE id=$1", [id]);
 
-    const result = await pool.query(
-      `
-      UPDATE news
-      SET
-        title=$1,
-        date=$2,
-        text=$3,
-        image=$4
-      WHERE id=$5
-      RETURNING *
-      `,
-      [title, date, text, image, id],
-    );
-
-    res.json(result.rows[0]);
+    res.json({
+      message: "News deleted",
+    });
   } catch (error) {
     console.error(error);
 
