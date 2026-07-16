@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import DepartmentCard from "./DepartmentCard";
-import { departments } from "../data/departments";
+import { getDepartments } from "../api/departmentsApi";
+import type { Department } from "../api/departmentsApi";
 
 function DepartmentsSection() {
+  const [departments, setDepartments] = useState<Department[]>([]);
+
+  useEffect(() => {
+    getDepartments().then(setDepartments).catch(console.error);
+  }, []);
+
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-6">

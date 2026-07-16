@@ -19,7 +19,8 @@ function DoctorsSection() {
           Наши врачи
         </h2>
 
-        <div className="grid md:grid-3 gap-8 mt-10">
+        <div className="grid md:grid-cols-3 gap-8 mt-10">
+          {" "}
           {doctors.slice(0, 3).map((doctor) => (
             <DoctorsCard key={doctor.id} doctor={doctor} />
           ))}

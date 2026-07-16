@@ -1,10 +1,22 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { departments } from "../data/departments";
+import { getDepartments } from "../api/departmentsApi";
+import type { Department } from "../api/departmentsApi";
 
 function DepartmentDetails() {
   const { id } = useParams();
 
-  const department = departments.find((item) => item.id === Number(id));
+  const [department, setDepartment] = useState<Department | null>(null);
+
+  useEffect(() => {
+    getDepartments()
+      .then((data) => {
+        const found = data.find((item) => item.id === Number(id));
+
+        setDepartment(found || null);
+      })
+      .catch(console.error);
+  }, [id]);
 
   if (!department) {
     return <div className="py-16 text-center">Отделение не найдено</div>;
@@ -21,8 +33,8 @@ function DepartmentDetails() {
           <h2 className="text-2xl font-bold text-blue-800">Услуги отделения</h2>
 
           <ul className="mt-4 space-y-2">
-            {department.services.map((service) => (
-              <li key={service}>✓ {service}</li>
+            {department.services.map((service, index) => (
+              <li key={index}>✓ {service}</li>
             ))}
           </ul>
         </div>
