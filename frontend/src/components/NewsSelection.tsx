@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
-import { news } from "../data/news";
+import { getNews } from "../api/newsApi";
+import type { News } from "../api/newsApi";
 
 function NewsSection() {
+  const [news, setNews] = useState<News[]>([]);
+
+  useEffect(() => {
+    getNews().then(setNews).catch(console.error);
+  }, []);
+
   return (
     <section className="py-16 bg-blue-50">
       <div className="max-w-7xl mx-auto px-6">

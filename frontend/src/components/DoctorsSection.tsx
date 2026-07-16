@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getDoctors } from "../api/doctorstApi";
 import type { Doctor } from "../api/doctorstApi";
 import DoctorsCard from "./DoctorCard";
+import { Link } from "react-router-dom";
 
 function DoctorsSection() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
@@ -25,6 +26,20 @@ function DoctorsSection() {
             <DoctorsCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
+      </div>
+      <div className="text-center mt-10">
+        <Link
+          to="/doctors"
+          className="
+    bg-blue-700
+    text-white
+    px-6
+    py-3
+    rounded-lg
+    "
+        >
+          Все врачи →
+        </Link>
       </div>
     </section>
   );

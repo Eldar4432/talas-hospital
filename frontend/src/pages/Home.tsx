@@ -3,7 +3,6 @@ import DoctorsSection from "../components/DoctorsSection";
 import NewsSection from "../components/NewsSelection";
 import Hero from "../components/Hero";
 import StatisticsSection from "../components/StatisticsSections";
-import Doctors from "./Doctors";
 import ContactsSection from "../components/ContactsSelections";
 import ServicesSection from "../components/ServicesSections";
 
@@ -14,10 +13,9 @@ function Home() {
       <StatisticsSection />
       <ServicesSection />
       <DepartmentsSection />
+      <DoctorsSection />
       <NewsSection />
-      <Doctors />
       <ContactsSection />
-      {/* <DoctorsSection /> */}
     </main>
   );
 }

@@ -2,6 +2,7 @@ type NewsItem = {
   title: string;
   date: string;
   text: string;
+  image: string;
 };
 
 function NewsCard({ news }: { news: NewsItem }) {
@@ -12,6 +13,15 @@ function NewsCard({ news }: { news: NewsItem }) {
       <h2 className="text-xl font-bold mt-3 text-blue-700">{news.title}</h2>
 
       <p className="mt-3 text-gray-600">{news.text}</p>
+
+      <img
+        src={
+          news.image
+            ? `http://localhost:5000${news.image}`
+            : "/news-placeholder.jpg"
+        }
+        alt={news.title}
+      />
 
       <button className="mt-5 text-blue-700">Читать далее →</button>
     </article>
