@@ -9,6 +9,7 @@ import Departments from "./pages/Departments";
 import Doctors from "./pages/Doctors";
 import News from "./pages/News.tsx";
 import Contacts from "./pages/Contacts";
+import Documents from "./pages/Documents";
 import DoctorDetails from "./pages/DoctorDetails";
 import DepartmentDetails from "./pages/DepartmentDetails";
 import Appointment from "./pages/Appointment";
@@ -21,6 +22,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminAppointments from "./pages/AdminAppointments";
 import AdminDepartments from "./pages/AdminDepartments";
 import AdminContacts from "./pages/AdminContacts";
+import AdminDocuments from "./pages/AdminDocuments";
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/documents" element={<Documents />} />
         <Route path="/admin" element={<Admin />} />
         <Route
           path="/admin/doctors"
@@ -76,6 +79,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminDepartments />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/documents"
+          element={
+            <ProtectedRoute>
+              <AdminDocuments />
             </ProtectedRoute>
           }
         />

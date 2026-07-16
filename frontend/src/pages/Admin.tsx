@@ -49,6 +49,7 @@ function Admin() {
                 <b>Комментарий:</b> {item.message}
               </p>
               <Link to="/admin/contacts">Контакты</Link>
+              <Link to="/admin/documents">Документы</Link>
             </div>
           ))}
         </div>

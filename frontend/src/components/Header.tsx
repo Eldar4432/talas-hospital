@@ -57,13 +57,7 @@ function Header() {
           <Link to="/contacts" className="hover:text-blue-700">
             Контакты
           </Link>
-
-          <Link
-            to="/contacts"
-            className="bg-blue-700 text-white px-5 py-2 rounded-lg hover:bg-blue-800"
-          >
-            Записаться
-          </Link>
+          <Link to="/documents">Документы</Link>
         </nav>
       </div>
     </header>
