@@ -8,6 +8,7 @@ import appoinmentsRouter from "./routes/appointments";
 import authRouter from "./routes/auth";
 import path from "path";
 import contacts from "./routes/contacts";
+import documentsRouter from "./routes/documents";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/news", newsRouter);
 app.use("/api/appointments", appoinmentsRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/contacts", contacts);
+app.use("/api/documents", documentsRouter);
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.get("/", (req, res) => {
