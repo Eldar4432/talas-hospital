@@ -14,7 +14,7 @@ function Departments() {
 
   return (
     <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <h1 className="text-4xl font-bold text-blue-800 text-center">
           Наши отделения
         </h1>

@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Departments from "./pages/Departments";
 import Doctors from "./pages/Doctors";
 import News from "./pages/News.tsx";
+import NewsDetails from "./pages/NewsDetails.tsx";
 import Contacts from "./pages/Contacts";
 import Documents from "./pages/Documents";
 import DoctorDetails from "./pages/DoctorDetails";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/doctors/:id" element={<DoctorDetails />} />
         <Route path="/departments/:id" element={<DepartmentDetails />} />
         <Route path="/news" element={<News />} />
+        <Route path="/news/:id" element={<NewsDetails />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/admin/login" element={<AdminLogin />} />

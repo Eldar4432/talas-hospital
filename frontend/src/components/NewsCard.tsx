@@ -1,60 +1,58 @@
-type NewsItem = {
+import { Link } from "react-router-dom";
+
+interface News {
   id: number;
   title: string;
   date: string;
   text: string;
   image: string;
-};
+}
 
-function NewsCard({ news }: { news: NewsItem }) {
+function NewsCard({ news }: { news: News }) {
   return (
     <article
       className="
-        bg-white
-        rounded-2xl
-        overflow-hidden
-        shadow-sm
-        border
-        hover:shadow-xl
-        transition
-        duration-300
+      bg-white
+      border
+      border-gray-200
+      rounded-xl
+      overflow-hidden
+      hover:shadow-lg
+      transition
       "
     >
-      <div className="h-52 overflow-hidden">
+      {news.image && (
         <img
-          src={
-            news.image
-              ? `http://localhost:5000${news.image}`
-              : "/news-placeholder.jpg"
-          }
+          src={`http://localhost:5000${news.image}`}
           alt={news.title}
           className="
-            w-full
-            h-full
-            object-cover
-            hover:scale-105
-            transition
-            duration-500
+          w-full
+          h-48
+          object-cover
           "
         />
-      </div>
+      )}
 
       <div className="p-6">
-        <p className="text-sm text-gray-500">
+        <p
+          className="
+          text-sm
+          text-gray-500
+          "
+        >
           {new Date(news.date).toLocaleDateString("ru-RU")}
         </p>
 
-        <h3
+        <h2
           className="
-          text-xl
-          font-bold
-          text-blue-800
           mt-3
-          line-clamp-2
+          text-xl
+          font-semibold
+          text-blue-900
           "
         >
           {news.title}
-        </h3>
+        </h2>
 
         <p
           className="
@@ -66,16 +64,18 @@ function NewsCard({ news }: { news: NewsItem }) {
           {news.text}
         </p>
 
-        <button
+        <Link
+          to={`/news/${news.id}`}
           className="
+          inline-block
           mt-5
           text-blue-700
-          font-semibold
+          font-medium
           hover:text-blue-900
           "
         >
           Читать далее →
-        </button>
+        </Link>
       </div>
     </article>
   );

@@ -23,7 +23,7 @@ function Hero() {
       />
 
       <div className="absolute inset-0 bg-blue-900/60 flex items-center">
-        <div className="max-w-7xl mx-auto px-6 text-white">
+        <div className="max-w-6xl mx-auto px-6 text-white">
           <h1 className="text-4xl md:text-5xl font-bold max-w-4xl">
             {hospital.name}
           </h1>
