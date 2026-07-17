@@ -4,60 +4,188 @@ import logo from "../assets/images/logotoob.png";
 function Footer() {
   return (
     <footer className="bg-blue-900 text-white mt-20">
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Больница */}
           <div>
             <div className="flex items-center gap-3">
               <img
                 src={logo}
                 alt="Логотип больницы"
-                className="w-16 h-16 object-contain"
+                className="
+                w-12
+                h-12
+                object-contain
+                "
               />
 
-              <h2 className="text-xl font-bold">
-                Таласская областная объединённая больница
-              </h2>
+              <div>
+                <h2
+                  className="
+                  text-lg
+                  font-bold
+                  leading-tight
+                "
+                >
+                  Таласская областная объединённая больница
+                </h2>
+
+                <p
+                  className="
+                  text-sm
+                  text-blue-200
+                  mt-1
+                "
+                >
+                  имени Чолпона Мамбетова
+                </p>
+              </div>
             </div>
 
-            <p className="mt-4 text-blue-100">
-              Медицинская помощь жителям Таласской области.
+            <p
+              className="
+              mt-5
+              text-blue-100
+              text-sm
+              leading-6
+            "
+            >
+              Медицинская помощь и обслуживание жителей Таласской области.
             </p>
           </div>
 
+          {/* Контакты */}
           <div>
-            <h3 className="font-bold text-lg">Контакты</h3>
+            <h3
+              className="
+              font-semibold
+              text-lg
+            "
+            >
+              Контакты
+            </h3>
 
-            <p className="mt-3">📍 г. Талас</p>
+            <div
+              className="
+              mt-4
+              space-y-2
+              text-blue-100
+              text-sm
+            "
+            >
+              <p>📍 г. Талас</p>
 
-            <p>☎ Регистратура</p>
+              <p>☎ Регистратура: +996 997 704 007</p>
 
-            <p>✉ info@hospital.kg</p>
+              <p>✉ info@hospital.kg</p>
+            </div>
           </div>
 
+          {/* Навигация */}
           <div>
-            <h3 className="font-bold text-lg">Разделы</h3>
+            <h3
+              className="
+              font-semibold
+              text-lg
+            "
+            >
+              Разделы сайта
+            </h3>
 
-            <div className="mt-3 space-y-2">
-              <Link to="/about" className="block hover:text-blue-200">
+            <div
+              className="
+              mt-4
+              space-y-2
+              text-sm
+            "
+            >
+              <Link
+                to="/about"
+                className="
+                block
+                text-blue-100
+                hover:text-white
+                transition
+                "
+              >
                 О больнице
               </Link>
 
-              <Link to="/departments" className="block hover:text-blue-200">
+              <Link
+                to="/departments"
+                className="
+                block
+                text-blue-100
+                hover:text-white
+                transition
+                "
+              >
                 Отделения
               </Link>
 
-              <Link to="/news" className="block hover:text-blue-200">
+              <Link
+                to="/doctors"
+                className="
+                block
+                text-blue-100
+                hover:text-white
+                transition
+                "
+              >
+                Врачи
+              </Link>
+
+              <Link
+                to="/news"
+                className="
+                block
+                text-blue-100
+                hover:text-white
+                transition
+                "
+              >
                 Новости
+              </Link>
+
+              <Link
+                to="/documents"
+                className="
+                block
+                text-blue-100
+                hover:text-white
+                transition
+                "
+              >
+                Документы
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-blue-700 mt-8 pt-5 text-center">
-          <p>© 2026 Таласская областная объединённая больница</p>
+        {/* Нижняя часть */}
 
-          <p className="mt-2 text-blue-200 text-sm">
-            Разработка и техническая поддержка: Эльдар Айбеков
+        <div
+          className="
+          border-t
+          border-blue-700
+          mt-10
+          pt-6
+          text-center
+          text-sm
+          "
+        >
+          <p className="text-blue-100">
+            © 2026 Таласская областная объединённая больница
+          </p>
+
+          <p
+            className="
+            mt-2
+            text-blue-300
+          "
+          >
+            Разработка и техническая поддержка:
+            <span className="text-white font-medium"> Эльдар Айбеков</span>
           </p>
         </div>
       </div>
