@@ -3,62 +3,114 @@ import logo from "../assets/images/logotoob.png";
 
 function Header() {
   return (
-    <header className="bg-white shadow-md">
-      {/* Верхняя информация */}
+    <header className="bg-white shadow-sm">
+      {/* Верхняя информационная панель */}
       <div className="bg-blue-800 text-white text-sm">
-        <div className="max-w-6xl mx-auto px-6 py-2 flex justify-between">
+        <div className="max-w-6xl mx-auto px-6 py-2 flex justify-between items-center">
           <p>☎ Регистратура: +996 997 704 007</p>
 
           <p>🕒 Пн-Сб: 09:00 - 18:00</p>
         </div>
       </div>
 
-      {/* Основной Header */}
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Логотип */}
-        <Link to="/" className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="Логотип больницы"
-            className="w-16 h-16 object-contain"
-          />
+      {/* Основная часть */}
+      <div className="max-w-6xl mx-auto px-6 py-4">
+        <div
+          className="
+          flex
+          items-center
+          justify-between
+          gap-6
+        "
+        >
+          {/* Логотип + название */}
+          <Link
+            to="/"
+            className="
+            flex
+            items-center
+            gap-3
+            min-w-0
+            "
+          >
+            <img
+              src={logo}
+              alt="Логотип больницы"
+              className="
+              w-14
+              h-14
+              object-contain
+              flex-shrink-0
+              "
+            />
 
-          <div>
-            <h1 className="text-xl font-bold text-blue-700">
-              Таласская областная объединённая больница
-            </h1>
+            <div className="min-w-0">
+              <h1
+                className="
+                text-base
+                md:text-lg
+                font-bold
+                text-blue-800
+                leading-tight
+                "
+              >
+                Таласская областная объединённая больница
+              </h1>
 
-            <p className="text-sm text-gray-500">имени Чолпона Мамбетова</p>
-          </div>
-        </Link>
-
-        {/* Навигация */}
-        <nav className="hidden lg:flex gap-6 text-gray-700 items-center">
-          <Link to="/" className="hover:text-blue-700">
-            Главная
+              <p
+                className="
+                text-xs
+                md:text-sm
+                text-gray-500
+                mt-1
+                "
+              >
+                имени Чолпона Мамбетова
+              </p>
+            </div>
           </Link>
 
-          <Link to="/about" className="hover:text-blue-700">
-            О больнице
-          </Link>
+          {/* Навигация */}
+          <nav
+            className="
+            hidden
+            lg:flex
+            items-center
+            gap-4
+            text-sm
+            text-gray-700
+            whitespace-nowrap
+            "
+          >
+            <Link to="/" className="hover:text-blue-700 transition">
+              Главная
+            </Link>
 
-          <Link to="/departments" className="hover:text-blue-700">
-            Отделения
-          </Link>
+            <Link to="/about" className="hover:text-blue-700 transition">
+              О больнице
+            </Link>
 
-          <Link to="/doctors" className="hover:text-blue-700">
-            Врачи
-          </Link>
+            <Link to="/departments" className="hover:text-blue-700 transition">
+              Отделения
+            </Link>
 
-          <Link to="/news" className="hover:text-blue-700">
-            Новости
-          </Link>
+            <Link to="/doctors" className="hover:text-blue-700 transition">
+              Врачи
+            </Link>
 
-          <Link to="/contacts" className="hover:text-blue-700">
-            Контакты
-          </Link>
-          <Link to="/documents">Документы</Link>
-        </nav>
+            <Link to="/news" className="hover:text-blue-700 transition">
+              Новости
+            </Link>
+
+            <Link to="/contacts" className="hover:text-blue-700 transition">
+              Контакты
+            </Link>
+
+            <Link to="/documents" className="hover:text-blue-700 transition">
+              Документы
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );
