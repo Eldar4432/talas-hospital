@@ -11,15 +11,19 @@ function NewsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-blue-50">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-blue-800">
-          Новости больницы
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-blue-900">Новости больницы</h2>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-10">
+          <p className="mt-3 text-gray-600">
+            Последние события и важная информация
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
           {news.slice(0, 3).map((item) => (
-            <NewsCard key={item.title} news={item} />
+            <NewsCard key={item.id} news={item} />
           ))}
         </div>
       </div>
