@@ -10,6 +10,7 @@ function Hero() {
   useEffect(() => {
     getHospitalInfo().then(setHospital).catch(console.error);
   }, []);
+
   if (!hospital) {
     return null;
   }
@@ -18,27 +19,102 @@ function Hero() {
     <section className="relative">
       <img
         src={hospitalImage}
-        alt="Таласская больница"
-        className="w-full h-[500px] object-cover"
+        alt="Таласская областная больница"
+        className="
+        w-full
+        h-[420px]
+        md:h-[460px]
+        object-cover
+        "
       />
 
-      <div className="absolute inset-0 bg-blue-900/60 flex items-center">
-        <div className="max-w-6xl mx-auto px-6 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold max-w-4xl">
-            {hospital.name}
-          </h1>
+      <div
+        className="
+        absolute
+        inset-0
+        bg-gradient-to-r
+        from-blue-950/80
+        via-blue-900/60
+        to-blue-900/30
+        "
+      />
 
-          <p className="mt-6 text-lg md:text-xl max-w-2xl">
-            {hospital.description}
-          </p>
-
-          <div className="mt-8 flex gap-4 flex-wrap">
-            <Link
-              to="/doctors"
-              className="border border-white px-8 py-3 rounded-lg font-bold"
+      <div
+        className="
+        absolute
+        inset-0
+        flex
+        items-center
+      "
+      >
+        <div
+          className="
+          max-w-6xl
+          mx-auto
+          px-6
+          w-full
+          text-white
+        "
+        >
+          <div className="max-w-3xl">
+            <p
+              className="
+              text-sm
+              uppercase
+              tracking-wider
+              text-blue-100
+              mb-4
+              "
             >
-              Наши врачи
-            </Link>
+              Таласская область
+            </p>
+
+            <h1
+              className="
+              text-3xl
+              md:text-5xl
+              font-bold
+              leading-tight
+              "
+            >
+              {hospital.name}
+            </h1>
+
+            <p
+              className="
+              mt-5
+              text-base
+              md:text-lg
+              text-blue-50
+              leading-7
+              "
+            >
+              {hospital.description}
+            </p>
+
+            <div
+              className="
+              mt-8
+            "
+            >
+              <Link
+                to="/doctors"
+                className="
+                inline-flex
+                items-center
+                bg-white
+                text-blue-900
+                px-7
+                py-3
+                rounded-lg
+                font-semibold
+                hover:bg-blue-50
+                transition
+                "
+              >
+                Наши врачи →
+              </Link>
+            </div>
           </div>
         </div>
       </div>
