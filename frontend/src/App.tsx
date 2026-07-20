@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Departments from "./pages/Departments";
 import Doctors from "./pages/Doctors";
-import News from "./pages/News.tsx";
+import News from "./pages/News";
 import NewsDetails from "./pages/NewsDetails.tsx";
 import Contacts from "./pages/Contacts";
 import Documents from "./pages/Documents";
