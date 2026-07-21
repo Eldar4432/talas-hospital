@@ -110,136 +110,206 @@ function AdminDoctors() {
   };
 
   return (
-    <section className="py-16">
-      <div className="max-w-5xl mx-auto px-6">
-        <h1 className="text-3xl font-bold text-blue-800">Управление врачами</h1>
+    <section className="py-10">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="mb-8">
+          <h1 className="text-2xl font-semibold text-slate-900">
+            Управление врачами
+          </h1>
+          <p className="mt-2 text-sm text-slate-500 max-w-2xl">
+            Добавляйте и редактируйте врачей в аккуратном интерфейсе.
+          </p>
+        </div>
 
-        <form onSubmit={saveDoctor} className="mt-8 space-y-3">
-          <input
-            className="border p-3 w-full"
-            placeholder="Имя"
-            value={form.name}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                name: e.target.value,
-              })
-            }
-          />
+        <form
+          onSubmit={saveDoctor}
+          className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-5 mb-10"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Имя
+              </label>
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                placeholder="Имя"
+                value={form.name}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    name: e.target.value,
+                  })
+                }
+              />
+            </div>
 
-          <input
-            className="border p-3 w-full"
-            placeholder="Должность"
-            value={form.position}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                position: e.target.value,
-              })
-            }
-          />
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Должность
+              </label>
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                placeholder="Должность"
+                value={form.position}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    position: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
 
-          <input
-            className="border p-3 w-full"
-            placeholder="Опыт"
-            value={form.experience}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                experience: e.target.value,
-              })
-            }
-          />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Опыт
+              </label>
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                placeholder="Опыт"
+                value={form.experience}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    experience: e.target.value,
+                  })
+                }
+              />
+            </div>
 
-          <input
-            className="border p-3 w-full"
-            placeholder="Образование"
-            value={form.education}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                education: e.target.value,
-              })
-            }
-          />
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Образование
+              </label>
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                placeholder="Образование"
+                value={form.education}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    education: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
 
-          <input
-            className="border p-3 rounded w-full"
-            placeholder="Специализация"
-            value={form.specialization}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                specialization: e.target.value,
-              })
-            }
-          />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Специализация
+              </label>
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                placeholder="Специализация"
+                value={form.specialization}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    specialization: e.target.value,
+                  })
+                }
+              />
+            </div>
 
-          <input
-            className="border p-3 rounded w-full"
-            placeholder="Отделение"
-            value={form.department}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                department: e.target.value,
-              })
-            }
-          />
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Отделение
+              </label>
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                placeholder="Отделение"
+                value={form.department}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    department: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
 
-          <textarea
-            className="border p-3 rounded w-full"
-            rows={5}
-            placeholder="Биография врача"
-            value={form.biography}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                biography: e.target.value,
-              })
-            }
-          />
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Биография врача
+            </label>
+            <textarea
+              className="w-full border border-slate-300 rounded-2xl p-4 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+              rows={5}
+              placeholder="Биография врача"
+              value={form.biography}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  biography: e.target.value,
+                })
+              }
+            />
+          </div>
 
-          <input
-            type="file"
-            onChange={(e) => setImage(e.target.files?.[0] || null)}
-          />
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Фото врача
+            </label>
+            <input
+              type="file"
+              className="w-full text-sm text-slate-700"
+              onChange={(e) => setImage(e.target.files?.[0] || null)}
+            />
+          </div>
 
-          <button className="bg-blue-700 text-white px-5 py-2 rounded">
-            {editingId ? "Сохранить изменения" : "Добавить врача"}
-          </button>
-
-          {editingId && (
-            <button
-              type="button"
-              onClick={clearForm}
-              className="ml-3 bg-gray-400 text-white px-5 py-2 rounded"
-            >
-              Отмена
+          <div className="flex flex-wrap gap-3">
+            <button className="inline-flex items-center rounded-2xl bg-blue-800 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-900">
+              {editingId ? "Сохранить изменения" : "Добавить врача"}
             </button>
-          )}
+
+            {editingId && (
+              <button
+                type="button"
+                onClick={clearForm}
+                className="inline-flex items-center rounded-2xl bg-slate-500 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-600"
+              >
+                Отмена
+              </button>
+            )}
+          </div>
         </form>
 
-        <div className="mt-10">
+        <div className="space-y-4">
           {doctors.map((doctor) => (
-            <div key={doctor.id} className="border p-4 mt-3 rounded">
-              <h2 className="font-bold">{doctor.name}</h2>
+            <div
+              key={doctor.id}
+              className="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-start">
+                <div>
+                  <h2 className="text-lg font-semibold text-slate-900">
+                    {doctor.name}
+                  </h2>
+                  <p className="mt-1 text-sm text-slate-500">
+                    {doctor.position}
+                  </p>
+                </div>
 
-              <p>{doctor.position}</p>
-
-              <button
-                onClick={() => editDoctor(doctor)}
-                className="text-blue-600 mr-4"
-              >
-                Редактировать
-              </button>
-
-              <button
-                onClick={() => deleteDoctor(doctor.id)}
-                className="text-red-600"
-              >
-                Удалить
-              </button>
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => editDoctor(doctor)}
+                    className="text-sm font-medium text-blue-800 hover:text-blue-900"
+                  >
+                    Редактировать
+                  </button>
+                  <button
+                    onClick={() => deleteDoctor(doctor.id)}
+                    className="text-sm font-medium text-red-600 hover:text-red-700"
+                  >
+                    Удалить
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
