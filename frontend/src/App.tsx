@@ -14,6 +14,7 @@ import Documents from "./pages/Documents";
 import DoctorDetails from "./pages/DoctorDetails";
 import DepartmentDetails from "./pages/DepartmentDetails";
 import Appointment from "./pages/Appointment";
+import Vacancies from "./pages/Vacancies.tsx";
 import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import AdminDoctors from "./pages/AdminDoctors";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/documents" element={<Documents />} />
+        <Route path="/vacancies" element={<Vacancies />} />
         <Route
           path="/admin"
           element={
