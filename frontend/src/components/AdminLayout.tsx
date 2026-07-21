@@ -61,45 +61,44 @@ function AdminLayout() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-blue-800 text-white px-6 py-4 flex justify-between items-center">
+      <header className="bg-blue-800 text-white px-8 py-5 flex justify-between items-center">
         <div>
-          <h1 className="text-lg font-semibold">🏥 Панель управления</h1>
+          <h1 className="text-xl font-bold">🏥 Панель управления больницей</h1>
           <p className="text-sm text-blue-100">{user.name}</p>
-          <p className="text-xs text-blue-200">{user.role}</p>
+          <p className="text-xs text-blue-200">{user.role}</p>{" "}
         </div>
-        <button
-          onClick={logout}
-          className="bg-red-600 px-4 py-2 rounded-lg text-sm"
-        >
+        <button onClick={logout} className="bg-red-600 px-4 py-2 rounded-lg">
           Выйти
         </button>
       </header>
 
       <div className="flex">
-        <aside className="w-56 bg-white min-h-screen shadow-sm p-5">
-          <nav className="space-y-2 text-sm">
-            {menu.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `
+        <aside className="w-64 bg-white min-h-screen shadow p-5">
+          <nav className="space-y-3">
+            <nav className="space-y-2">
+              {menu.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `
  block
- px-3
+ px-4
  py-2
  rounded-lg
  transition
- ${isActive ? "bg-blue-100 text-blue-800 font-semibold" : "hover:bg-gray-100 text-slate-700"}
+ ${isActive ? "bg-blue-100 text-blue-800 font-bold" : "hover:bg-gray-100"}
  `
-                }
-              >
-                {item.icon} {item.title}
-              </NavLink>
-            ))}
+                  }
+                >
+                  {item.icon} {item.title}
+                </NavLink>
+              ))}
+            </nav>
           </nav>
         </aside>
 
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-8">
           <Outlet />
         </main>
       </div>
