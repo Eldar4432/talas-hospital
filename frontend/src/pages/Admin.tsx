@@ -46,6 +46,13 @@ function Admin() {
       link: "/admin/contacts",
       icon: "📞",
     },
+
+    {
+      title: "Вакансии",
+      description: "Управление вакансиями больницы",
+      link: "/admin/vacancies",
+      icon: "💼",
+    },
     {
       title: "Документы",
       description: "Лицензии, приказы и официальные документы",

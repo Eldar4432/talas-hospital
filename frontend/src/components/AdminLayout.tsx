@@ -29,12 +29,6 @@ function AdminLayout() {
     },
 
     {
-      title: "Заявки",
-      path: "/admin/appointments",
-      icon: "📩",
-    },
-
-    {
       title: "Контакты",
       path: "/admin/contacts",
       icon: "📞",
@@ -44,6 +38,12 @@ function AdminLayout() {
       title: "О больнице",
       path: "/admin/hospital-info",
       icon: "ℹ️",
+    },
+
+    {
+      title: "Вакансии",
+      path: "/admin/vacancies",
+      icon: "💼",
     },
 
     {

@@ -26,6 +26,7 @@ import AdminContacts from "./pages/AdminContacts";
 import AdminDocuments from "./pages/AdminDocuments";
 import AdminHospitalInfo from "./pages/AdminHospitalInfo";
 import AdminLayout from "./components/AdminLayout.tsx";
+import AdminVacancies from "./pages/AdminVacancies.tsx";
 
 function App() {
   return (
@@ -55,18 +56,13 @@ function App() {
           }
         >
           <Route index element={<Admin />} />
-
           <Route path="doctors" element={<AdminDoctors />} />
-
           <Route path="news" element={<AdminNews />} />
-
           <Route path="contacts" element={<AdminContacts />} />
-
           <Route path="departments" element={<AdminDepartments />} />
-
           <Route path="documents" element={<AdminDocuments />} />
-
           <Route path="hospital-info" element={<AdminHospitalInfo />} />
+          <Route path="vacancies" element={<AdminVacancies />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
