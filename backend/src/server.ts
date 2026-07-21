@@ -10,6 +10,7 @@ import path from "path";
 import contacts from "./routes/contacts";
 import documentsRouter from "./routes/documents";
 import hospitalInfoRouter from "./routes/hospitalInfo";
+import vacanciesRouter from "./routes/vacancies";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/contacts", contacts);
 app.use("/api/documents", documentsRouter);
 app.use("/api/hospital-info", hospitalInfoRouter);
+app.use("/api/vacancies", vacanciesRouter);
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.get("/", (req, res) => {
