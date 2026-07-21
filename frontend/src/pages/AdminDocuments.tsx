@@ -52,68 +52,108 @@ function AdminDocuments() {
   };
 
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold mb-8">Управление документами</h1>
+    <section className="py-10">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="mb-8">
+          <h1 className="text-2xl font-semibold text-slate-900">
+            Управление документами
+          </h1>
+          <p className="mt-2 text-sm text-slate-500 max-w-2xl">
+            Добавляйте и просматривайте документы в админ-панели.
+          </p>
+        </div>
 
-      <form onSubmit={addDocument} className="space-y-4 mb-10">
-        <input
-          className="border p-3 w-full"
-          placeholder="Название документа"
-          value={form.title}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              title: e.target.value,
-            })
-          }
-        />
-
-        <textarea
-          className="border p-3 w-full"
-          placeholder="Описание"
-          value={form.description}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              description: e.target.value,
-            })
-          }
-        />
-
-        <input
-          type="file"
-          accept=".pdf"
-          onChange={(e) =>
-            setForm({
-              ...form,
-              file: e.target.files?.[0] || null,
-            })
-          }
-        />
-
-        <button className="bg-blue-700 text-white px-5 py-2 rounded">
-          Добавить документ
-        </button>
-      </form>
-
-      <div className="space-y-4">
-        {documents.map((doc) => (
-          <div key={doc.id} className="border p-5 rounded">
-            <h2 className="font-bold">{doc.title}</h2>
-
-            <p>{doc.description}</p>
-
-            <a
-              href={`http://localhost:5000${doc.file}`}
-              target="_blank"
-              className="text-blue-700"
-            >
-              Открыть документ
-            </a>
+        <form
+          onSubmit={addDocument}
+          className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-5 mb-10"
+        >
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Название документа
+            </label>
+            <input
+              className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+              placeholder="Название документа"
+              value={form.title}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  title: e.target.value,
+                })
+              }
+            />
           </div>
-        ))}
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Описание
+            </label>
+            <textarea
+              className="w-full border border-slate-300 rounded-2xl p-4 text-sm text-slate-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+              placeholder="Описание"
+              value={form.description}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  description: e.target.value,
+                })
+              }
+              rows={4}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Файл PDF
+            </label>
+            <input
+              type="file"
+              accept=".pdf"
+              className="w-full text-sm text-slate-700"
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  file: e.target.files?.[0] || null,
+                })
+              }
+            />
+          </div>
+
+          <button className="w-full bg-blue-800 hover:bg-blue-900 text-white px-5 py-3 rounded-2xl text-sm font-medium transition">
+            Добавить документ
+          </button>
+        </form>
+
+        <div className="space-y-4">
+          {documents.map((doc) => (
+            <div
+              key={doc.id}
+              className="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm"
+            >
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
+                <div>
+                  <h2 className="text-lg font-semibold text-slate-900">
+                    {doc.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-slate-600">
+                    {doc.description}
+                  </p>
+                </div>
+
+                <a
+                  href={`http://localhost:5000${doc.file}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center text-sm font-medium text-blue-800 hover:text-blue-900"
+                >
+                  Открыть документ
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
