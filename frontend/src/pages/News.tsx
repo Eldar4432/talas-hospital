@@ -17,7 +17,7 @@ function News() {
           <h1
             className="
             text-4xl
-            md:text-5xl
+            md:text-4xl
             font-bold
             text-blue-900
             "

@@ -109,6 +109,9 @@ function Header() {
             <Link to="/documents" className="hover:text-blue-700 transition">
               Документы
             </Link>
+            <Link to="/vacancies" className="hover:text-blue-700">
+              Вакансии
+            </Link>
           </nav>
         </div>
       </div>
