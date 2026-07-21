@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import NewsCard from "../components/NewsCard";
 import { getNews } from "../api/newsApi";
-import type { News } from "../api/newsApi";
+import type { News as NewsItem } from "../api/newsApi";
 
 function News() {
-  const [news, setNews] = useState<News[]>([]);
+  const [news, setNews] = useState<NewsItem[]>([]);
 
   useEffect(() => {
     getNews().then(setNews).catch(console.error);
