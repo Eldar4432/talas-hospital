@@ -62,57 +62,46 @@ function Admin() {
   ];
 
   return (
-    <section className="py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-blue-800">
-          Административная панель
-        </h1>
+    <section className="py-10">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between mb-10">
+          <div>
+            <h1 className="text-3xl font-semibold text-slate-900">
+              Административная панель
+            </h1>
+            <p className="mt-2 text-sm text-slate-500">
+              Добро пожаловать, {user.name}
+            </p>
+            <p className="text-sm text-slate-500">Роль: {user.role}</p>
+          </div>
 
-        <p className="mt-3 text-xl font-semibold">
-          Добро пожаловать, {user.name}
-        </p>
+          <button
+            onClick={logout}
+            className="inline-flex items-center rounded-2xl bg-red-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-red-700"
+          >
+            Выйти
+          </button>
+        </div>
 
-        <p className="text-gray-500">Роль: {user.role}</p>
+        <div className="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-sm text-slate-600">
+            Управляйте контентом сайта больницы: врачи, новости, отделения,
+            контакты, вакансии и документы.
+          </p>
+        </div>
 
-        <button
-          onClick={logout}
-          className="
-    bg-red-600
-    text-white
-    px-5
-    py-2
-    rounded-lg
-    "
-        >
-          Выйти
-        </button>
-
-        <p className="mt-3 text-gray-600">
-          Управление информацией сайта больницы
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6 mt-10">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {menu.map((item) => (
             <Link
               key={item.link}
               to={item.link}
-              className="
-              border
-              rounded-xl
-              p-6
-              shadow
-              hover:shadow-lg
-              transition
-              bg-white
-              "
+              className="rounded-3xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              <div className="text-4xl">{item.icon}</div>
-
-              <h2 className="text-xl font-bold mt-4 text-blue-800">
+              <div className="text-3xl">{item.icon}</div>
+              <h2 className="mt-4 text-lg font-semibold text-slate-900">
                 {item.title}
               </h2>
-
-              <p className="mt-2 text-gray-600">{item.description}</p>
+              <p className="mt-2 text-sm text-slate-500">{item.description}</p>
             </Link>
           ))}
         </div>
