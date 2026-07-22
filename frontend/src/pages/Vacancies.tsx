@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getVacancies } from "../api/vacanciesApi";
 import type { Vacancy } from "../api/vacanciesApi";
 
@@ -10,88 +11,89 @@ function Vacancies() {
   }, []);
 
   return (
-    <section className="py-16">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="mb-12">
+    <section className="py-12">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="mb-8">
           <h1
             className="
-          text-4xl
-          font-bold
-          text-blue-900
-          "
+            text-3xl
+            font-semibold
+            text-slate-800
+            "
           >
             Вакансии
           </h1>
 
           <p
             className="
-          mt-4
-          text-gray-600
-          max-w-2xl
-          "
+            mt-2
+            text-sm
+            text-slate-500
+            "
           >
-            Таласская областная объединённая больница приглашает специалистов
-            для работы в медицинской сфере.
+            Открытые вакансии Таласской областной объединённой больницы
           </p>
         </div>
 
+        {vacancies.length === 0 && (
+          <div
+            className="
+            border
+            rounded-lg
+            p-6
+            text-center
+            text-sm
+            text-slate-500
+            "
+          >
+            В настоящее время открытых вакансий нет.
+          </div>
+        )}
+
         <div
           className="
-        space-y-6
-        "
+          grid
+          md:grid-cols-2
+          gap-5
+          "
         >
-          {vacancies.length === 0 && (
-            <div
-              className="
-            border
-            rounded-xl
-            p-8
-            text-center
-            text-gray-500
-            "
-            >
-              В настоящее время открытых вакансий нет.
-            </div>
-          )}
-
           {vacancies.map((vacancy) => (
             <div
               key={vacancy.id}
               className="
               bg-white
               border
-              rounded-xl
-              p-6
-              shadow-sm
+              border-slate-200
+              rounded-lg
+              p-5
               hover:shadow-md
               transition
               "
             >
               <div
                 className="
-              flex
-              justify-between
-              items-start
-              gap-4
-              flex-wrap
-              "
+                flex
+                justify-between
+                gap-3
+                "
               >
                 <div>
                   <h2
                     className="
-                  text-2xl
-                  font-bold
-                  text-blue-800
-                  "
+                    text-lg
+                    font-semibold
+                    text-slate-800
+                    "
                   >
                     {vacancy.title}
                   </h2>
 
                   <p
                     className="
-                  mt-2
-                  text-gray-600
-                  "
+                    mt-1
+                    text-sm
+                    text-blue-700
+                    "
                   >
                     {vacancy.department}
                   </p>
@@ -99,12 +101,13 @@ function Vacancies() {
 
                 <span
                   className="
-                  bg-green-100
+                  h-fit
+                  text-xs
+                  bg-green-50
                   text-green-700
-                  px-4
+                  px-3
                   py-1
                   rounded-full
-                  text-sm
                   "
                 >
                   Открыта
@@ -113,77 +116,55 @@ function Vacancies() {
 
               <div
                 className="
-              grid
-              md:grid-cols-3
-              gap-4
-              mt-6
-              text-sm
-              "
+                mt-4
+                grid
+                grid-cols-2
+                gap-3
+                text-sm
+                "
               >
                 <div>
-                  <b>Тип занятости:</b>
-                  <p>{vacancy.employment_type}</p>
+                  <p className="text-slate-400">Занятость</p>
+
+                  <p className="text-slate-700">{vacancy.employment_type}</p>
                 </div>
 
                 <div>
-                  <b>Опыт:</b>
-                  <p>{vacancy.experience}</p>
-                </div>
+                  <p className="text-slate-400">Опыт</p>
 
-                <div>
-                  <b>Образование:</b>
-                  <p>{vacancy.education}</p>
+                  <p className="text-slate-700">{vacancy.experience}</p>
                 </div>
               </div>
 
-              <div className="mt-6">
-                <h3 className="font-bold text-blue-900">Требования</h3>
+              {vacancy.education && (
+                <div className="mt-4">
+                  <p className="text-xs text-slate-400">Образование</p>
 
-                <p
-                  className="
-                mt-2
-                text-gray-700
-                whitespace-pre-line
-                "
-                >
-                  {vacancy.requirements}
-                </p>
-              </div>
-
-              <div className="mt-6">
-                <h3 className="font-bold text-blue-900">Условия</h3>
-
-                <p
-                  className="
-                mt-2
-                text-gray-700
-                whitespace-pre-line
-                "
-                >
-                  {vacancy.conditions}
-                </p>
-              </div>
-
-              {vacancy.apply_url && (
-                <a
-                  href={vacancy.apply_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                  inline-block
-                  mt-6
-                  bg-blue-800
-                  text-white
-                  px-6
-                  py-3
-                  rounded-lg
-                  hover:bg-blue-900
-                  transition
+                  <p
+                    className="
+                    text-sm
+                    text-slate-700
+                    line-clamp-2
                   "
-                >
-                  Перейти к подаче заявки
-                </a>
+                  >
+                    {vacancy.education}
+                  </p>
+                </div>
               )}
+
+              <Link
+                to={`/vacancies/${vacancy.id}`}
+                className="
+                inline-flex
+                mt-5
+                text-sm
+                text-blue-700
+                font-medium
+                hover:underline
+                "
+              >
+                Подробнее →
+              </Link>
             </div>
           ))}
         </div>
