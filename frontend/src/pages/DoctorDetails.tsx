@@ -47,7 +47,7 @@ function DoctorDetails() {
         <div className="grid md:grid-cols-2 gap-10">
           {/* Фото */}
 
-          <div>
+          <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl shadow">
             <img
               src={
                 doctor.image
@@ -57,10 +57,9 @@ function DoctorDetails() {
               alt={doctor.name}
               className="
               w-full
-              h-[450px]
+              h-full
               object-cover
-              rounded-2xl
-              shadow
+              object-center
               "
             />
           </div>

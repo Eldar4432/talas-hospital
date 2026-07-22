@@ -82,7 +82,7 @@ focus:border-blue-500
 grid
 sm:grid-cols-2
 lg:grid-cols-3
-gap-5
+gap-4
 "
         >
           {filteredDoctors.map((doctor) => (

@@ -20,17 +20,19 @@ function DoctorCard({ doctor }: Props) {
       bg-white
       border
       border-slate-200
-      rounded-xl
+      rounded-2xl
       overflow-hidden
-      hover:shadow-md
+      shadow-sm
       transition
+      hover:shadow-md
       "
     >
       {/* Фото */}
 
       <div
         className="
-        h-52
+        aspect-[4/5]
+        w-full
         bg-slate-100
         overflow-hidden
         "
@@ -46,17 +48,17 @@ function DoctorCard({ doctor }: Props) {
           w-full
           h-full
           object-cover
-          object-top
+          object-center
           "
         />
       </div>
 
       {/* Информация */}
 
-      <div className="p-4">
+      <div className="p-3">
         <h2
           className="
-          text-base
+          text-sm
           font-semibold
           text-slate-800
           "
@@ -67,7 +69,7 @@ function DoctorCard({ doctor }: Props) {
         <p
           className="
           mt-1
-          text-sm
+          text-xs
           text-blue-700
           "
         >
@@ -76,8 +78,8 @@ function DoctorCard({ doctor }: Props) {
 
         <div
           className="
-          mt-3
-          text-sm
+          mt-2
+          text-xs
           text-slate-600
           "
         >
@@ -90,8 +92,8 @@ function DoctorCard({ doctor }: Props) {
           to={`/doctors/${doctor.id}`}
           className="
           inline-flex
-          mt-4
-          text-sm
+          mt-3
+          text-xs
           font-medium
           text-blue-700
           hover:underline
