@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface Doctor {
   id: number;
   name: string;
@@ -7,22 +9,32 @@ interface Doctor {
   image: string;
 }
 
-import { Link } from "react-router-dom";
+interface Props {
+  doctor: Doctor;
+}
 
-function DoctorCard({ doctor }: { doctor: Doctor }) {
+function DoctorCard({ doctor }: Props) {
   return (
     <div
       className="
       bg-white
-      rounded-2xl
-      shadow-md
-      overflow-hidden
       border
-      hover:shadow-xl
+      border-slate-200
+      rounded-xl
+      overflow-hidden
+      hover:shadow-md
       transition
       "
     >
-      <div className="h-72 bg-gray-100 flex items-center justify-center">
+      {/* Фото */}
+
+      <div
+        className="
+        h-52
+        bg-slate-100
+        overflow-hidden
+        "
+      >
         <img
           src={
             doctor.image
@@ -34,33 +46,54 @@ function DoctorCard({ doctor }: { doctor: Doctor }) {
           w-full
           h-full
           object-cover
+          object-top
           "
         />
       </div>
 
-      <div className="p-6">
-        <h2 className="text-xl font-bold text-blue-800">{doctor.name}</h2>
+      {/* Информация */}
 
-        <p className="mt-2 text-blue-600 font-medium">{doctor.position}</p>
+      <div className="p-4">
+        <h2
+          className="
+          text-base
+          font-semibold
+          text-slate-800
+          "
+        >
+          {doctor.name}
+        </h2>
 
-        <div className="mt-4 space-y-2 text-gray-600">
+        <p
+          className="
+          mt-1
+          text-sm
+          text-blue-700
+          "
+        >
+          {doctor.position}
+        </p>
+
+        <div
+          className="
+          mt-3
+          text-sm
+          text-slate-600
+          "
+        >
           <p>
-            <span className="font-semibold">Опыт:</span> {doctor.experience}
-          </p>
-
-          <p>
-            <span className="font-semibold">Образование:</span>{" "}
-            {doctor.education}
+            <span className="text-slate-400">Опыт:</span> {doctor.experience}
           </p>
         </div>
 
         <Link
           to={`/doctors/${doctor.id}`}
           className="
-          inline-block
-          mt-5
+          inline-flex
+          mt-4
+          text-sm
+          font-medium
           text-blue-700
-          font-semibold
           hover:underline
           "
         >

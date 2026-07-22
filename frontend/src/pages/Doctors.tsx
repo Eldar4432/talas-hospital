@@ -13,55 +13,81 @@ interface Doctor {
 
 function Doctors() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
+
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     api
       .get("/doctors")
-      .then((res) => {
-        setDoctors(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      .then((res) => setDoctors(res.data))
+      .catch(console.error);
   }, []);
 
-  return (
-    <section className="py-16">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-blue-800">Наши врачи</h1>
+  const filteredDoctors = doctors.filter((doctor) =>
+    doctor.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Врачи Таласской областной объединённой больницы, оказывающие
-            квалифицированную медицинскую помощь
+  return (
+    <section className="py-12">
+      <div
+        className="
+max-w-6xl
+mx-auto
+px-6
+"
+      >
+        <div className="mb-8">
+          <h1
+            className="
+text-3xl
+font-semibold
+text-slate-800
+"
+          >
+            Наши врачи
+          </h1>
+
+          <p
+            className="
+mt-2
+text-sm
+text-slate-500
+"
+          >
+            Специалисты Таласской областной объединённой больницы
           </p>
         </div>
-        <input
-          className="
-              mt-8
-              border
-              p-3
-              rounded-lg
-              w-full
-              max-w-xl
-              mx-auto
-              block
-              "
-          placeholder="Поиск врача..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-          {" "}
-          {doctors
-            .filter((doctor) =>
-              doctor.name.toLowerCase().includes(search.toLowerCase()),
-            )
-            .map((doctor) => (
-              <DoctorCard key={doctor.id} doctor={doctor} />
-            ))}
+        <div className="mb-6">
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Поиск врача..."
+            className="
+w-full
+md:w-80
+border
+rounded-md
+px-3
+py-2
+text-sm
+outline-none
+focus:border-blue-500
+"
+          />
+        </div>
+
+        <div
+          className="
+grid
+sm:grid-cols-2
+lg:grid-cols-3
+gap-5
+"
+        >
+          {filteredDoctors.map((doctor) => (
+            <DoctorCard key={doctor.id} doctor={doctor} />
+          ))}
         </div>
       </div>
     </section>
