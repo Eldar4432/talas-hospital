@@ -314,7 +314,7 @@ function AdminDoctors() {
                   image={imageSrc}
                   crop={crop}
                   zoom={zoom}
-                  aspect={4 / 5}
+                  aspect={3 / 4}
                   onCropChange={setCrop}
                   onZoomChange={setZoom}
                   onCropComplete={(_, croppedAreaPixels) =>
