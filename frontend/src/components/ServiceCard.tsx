@@ -135,32 +135,32 @@ function ServiceCard({ service }: { service: Service }) {
   const icon = icons[service.title as keyof typeof icons] ?? icons.Диагностика;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[16px] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-md">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white p-5 shadow-sm transition duration-300 hover:border-blue-200 hover:shadow-md">
       <div className="flex items-center justify-between gap-4">
-        <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-50 text-sky-700 transition duration-300 group-hover:bg-sky-100 group-hover:text-sky-900">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-800 transition duration-300 group-hover:bg-blue-100">
           {icon}
         </div>
-        <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-slate-600">
-          Услуга
+        <span className="text-xs font-medium text-blue-500">
+          Медицинская помощь
         </span>
       </div>
 
-      <h3 className="mt-8 text-2xl font-semibold leading-tight text-slate-950">
+      <h3 className="mt-6 text-lg font-semibold leading-tight text-blue-800">
         {service.title}
       </h3>
-      <p className="mt-4 text-base leading-7 text-slate-600">
+      <p className="mt-3 text-sm leading-6 text-slate-600">
         {service.description}
       </p>
 
-      <div className="mt-8 flex items-end justify-between gap-4">
+      <div className="mt-6 flex items-end justify-between gap-4">
         <button
           type="button"
-          className="rounded-full border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition duration-200 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+          className="rounded-xl border border-blue-200 bg-white px-4 py-2.5 text-sm font-medium text-blue-800 transition duration-200 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
           aria-label={`Подробнее об услуге ${service.title}`}
         >
           Подробнее
         </button>
-        <span className="text-sm font-medium text-slate-400">
+        <span className="text-xs font-medium text-slate-400">
           Государственная помощь
         </span>
       </div>

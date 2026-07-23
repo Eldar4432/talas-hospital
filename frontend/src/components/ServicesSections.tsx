@@ -3,27 +3,14 @@ import { services } from "../data/services";
 
 function ServicesSection() {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2
-            className="
-            text-3xl
-            md:text-4xl
-            font-bold
-            text-blue-800
-            "
-          >
+    <section className="bg-blue-50/60 py-10">
+      <div className="mx-auto max-w-5xl px-5">
+        <div className="mb-7">
+          <h2 className="text-2xl font-semibold text-blue-800">
             Медицинские услуги
           </h2>
 
-          <p
-            className="
-            mt-4
-            text-gray-600
-            leading-relaxed
-            "
-          >
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
             Больница оказывает широкий спектр медицинских услуг для диагностики,
             лечения и профилактики заболеваний.
           </p>
@@ -32,9 +19,9 @@ function ServicesSection() {
         <div
           className="
           grid
-          md:grid-cols-3
-          gap-6
-          mt-10
+          gap-4
+          sm:grid-cols-2
+          xl:grid-cols-3
           "
         >
           {services.slice(0, 6).map((service) => (
