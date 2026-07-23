@@ -11,99 +11,78 @@ interface Doctor {
 
 interface Props {
   doctor: Doctor;
+  /** Флаг активного состояния (например, при наведении или выборе), делающий плашку и рамку красными */
+  isActive?: boolean;
 }
 
-function DoctorCard({ doctor }: Props) {
+function DoctorCard({ doctor, isActive = false }: Props) {
   return (
-    <div
-      className="
-      bg-white
-      border
-      border-blue-100
-      rounded-2xl
-      overflow-hidden
-      shadow-sm
-      transition
-      hover:border-blue-200
-      hover:shadow-md
-      "
+    <Link
+      to={`/doctors/${doctor.id}`}
+      className={`
+        relative 
+        block 
+        group 
+        w-full 
+        aspect-[3/4] 
+        bg-gray-100 
+        overflow-hidden 
+        transition-all 
+        duration-200
+        border-2
+        ${
+          isActive
+            ? "border-red-500"
+            : "border-transparent hover:border-red-500"
+        }
+      `}
     >
-      {/* Фото */}
+      {/* Фото сотрудника */}
+      <img
+        src={
+          doctor.image
+            ? `http://localhost:5000${doctor.image}`
+            : "/doctor-placeholder.jpg"
+        }
+        alt={doctor.name}
+        className="w-full h-full object-cover object-center"
+      />
 
-      <div
-        className="
-        aspect-[3/4]
-        w-full
-        bg-blue-50
-        overflow-hidden
-        "
-      >
-        <img
-          src={
-            doctor.image
-              ? `http://localhost:5000${doctor.image}`
-              : "/doctor-placeholder.jpg"
-          }
-          alt={doctor.name}
-          className="
-          w-full
-          h-full
-          object-cover
-          object-center
-          "
-        />
-      </div>
-
-      {/* Информация */}
-
-      <div className="p-4">
-        <h2
-          className="
-          text-base
-          font-semibold
-          text-blue-800
-          "
+      {/* Текстовый блок в левом нижнем углу */}
+      <div className="absolute bottom-4 left-4 flex flex-col items-start space-y-1">
+        {/* Имя */}
+        <span
+          className={`
+            px-3 py-1 
+            text-base font-bold 
+            transition-colors duration-200
+            ${
+              isActive
+                ? "bg-red-600 text-white"
+                : "bg-white text-black group-hover:bg-red-600 group-hover:text-white"
+            }
+          `}
         >
           {doctor.name}
-        </h2>
+        </span>
 
-        <p
-          className="
-          mt-1
-          text-sm
-          text-slate-600
-          "
+        {/* Должность */}
+        <span
+          className={`
+            px-3 py-0.5 
+            text-xs font-normal 
+            transition-colors duration-200
+            ${
+              isActive
+                ? "bg-red-600 text-white"
+                : "bg-white text-gray-700 group-hover:bg-red-600 group-hover:text-white"
+            }
+          `}
         >
           {doctor.position}
-        </p>
-
-        <div
-          className="
-          mt-3
-          text-sm
-          text-slate-600
-          "
-        >
-          <p>
-            <span className="text-slate-400">Опыт:</span> {doctor.experience}
-          </p>
-        </div>
-
-        <Link
-          to={`/doctors/${doctor.id}`}
-          className="
-          inline-flex
-          mt-4
-          text-sm
-          font-medium
-          text-blue-800
-          hover:text-blue-900
-          "
-        >
-          Подробнее →
-        </Link>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
 
