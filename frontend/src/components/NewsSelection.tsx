@@ -12,59 +12,42 @@ function NewsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex justify-between items-end mb-10">
+    <section className="bg-blue-50/70 py-12">
+      <div className="mx-auto max-w-5xl px-5">
+        <div className="mb-8 flex items-end justify-between gap-5">
           <div>
-            <h2
-              className="
-              text-3xl
-              md:text-4xl
-              font-bold
-              text-blue-900
-              "
-            >
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-blue-700 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-blue-600" />
+              Актуально
+            </div>
+
+            <h2 className="text-2xl font-semibold text-blue-900 md:text-3xl">
               Новости больницы
             </h2>
 
-            <p className="mt-3 text-gray-600">
+            <p className="mt-2 text-sm text-slate-600">
               Последние события и официальная информация учреждения
             </p>
           </div>
 
           <Link
             to="/news"
-            className="
-            hidden
-            md:block
-            text-blue-700
-            font-medium
-            hover:text-blue-900
-            "
+            className="hidden rounded-2xl bg-blue-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-900 md:block"
           >
             Все новости →
           </Link>
         </div>
 
-        <div
-          className="
-          grid
-          md:grid-cols-3
-          gap-6
-          "
-        >
+        <div className="grid gap-5 md:grid-cols-3">
           {news.slice(0, 3).map((item) => (
             <NewsCard key={item.id} news={item} />
           ))}
         </div>
 
-        <div className="mt-8 text-center md:hidden">
+        <div className="mt-7 text-center md:hidden">
           <Link
             to="/news"
-            className="
-            text-blue-700
-            font-medium
-            "
+            className="inline-flex rounded-2xl bg-blue-800 px-4 py-2.5 text-sm font-medium text-white"
           >
             Все новости →
           </Link>
