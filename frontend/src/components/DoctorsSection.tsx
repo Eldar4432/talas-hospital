@@ -14,29 +14,26 @@ function DoctorsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-blue-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-blue-800">
-          Наши врачи
-        </h2>
+    <section className="py-12 bg-slate-50">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold text-slate-900">Наши врачи</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+            Профессиональные специалисты с проверенным опытом лечения и лечением
+            в государственных стандартах качества.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-10">
-          {" "}
-          {doctors.slice(0, 3).map((doctor) => (
+        <div className="mx-auto mt-8 grid max-w-6xl gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {doctors.slice(0, 4).map((doctor) => (
             <DoctorsCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
       </div>
-      <div className="text-center mt-10">
+      <div className="text-center mt-9">
         <Link
           to="/doctors"
-          className="
-    bg-blue-700
-    text-white
-    px-6
-    py-3
-    rounded-lg
-    "
+          className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition duration-200 hover:bg-slate-800"
         >
           Все врачи →
         </Link>

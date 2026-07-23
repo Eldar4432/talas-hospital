@@ -59,7 +59,7 @@ function DoctorDetails() {
             <div
               className="
               w-56
-              h-72
+              aspect-[3/4]
               overflow-hidden
               border
               border-gray-200
