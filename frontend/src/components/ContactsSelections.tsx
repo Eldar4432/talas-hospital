@@ -13,8 +13,8 @@ function ContactsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-10 bg-slate-50">
+      <div className="mx-auto max-w-5xl px-5">
         <h2 className="text-3xl font-bold text-center text-blue-800">
           Контакты
         </h2>
