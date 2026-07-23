@@ -12,16 +12,16 @@ function DepartmentsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="bg-blue-50/60 py-10">
+      <div className="mx-auto max-w-5xl px-5">
         {/* Заголовок */}
 
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-800">
+        <div className="mb-7">
+          <h2 className="text-2xl font-semibold text-blue-800">
             Наши отделения
           </h2>
 
-          <p className="mt-4 text-gray-600 leading-relaxed">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
             В структуру больницы входят специализированные отделения,
             обеспечивающие диагностику, лечение и медицинское сопровождение
             пациентов.
@@ -33,9 +33,9 @@ function DepartmentsSection() {
         <div
           className="
           grid
-          md:grid-cols-3
-          gap-8
-          mt-10
+          gap-4
+          sm:grid-cols-2
+          xl:grid-cols-3
           "
         >
           {departments.slice(0, 3).map((department) => (
@@ -46,20 +46,21 @@ function DepartmentsSection() {
         {/* Кнопка */}
 
         {departments.length > 3 && (
-          <div className="text-center mt-10">
+          <div className="mt-7">
             <Link
               to="/departments"
               className="
-              inline-block
-              border
-              border-blue-700
-              text-blue-700
-              px-6
+              inline-flex
+              items-center
+              rounded-2xl
+              bg-blue-800
+              px-5
               py-3
-              rounded-lg
-              hover:bg-blue-700
-              hover:text-white
+              text-sm
+              font-medium
+              text-white
               transition
+              hover:bg-blue-900
               "
             >
               Все отделения

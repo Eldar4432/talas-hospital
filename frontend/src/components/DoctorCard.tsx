@@ -20,11 +20,10 @@ function DoctorCard({ doctor }: Props) {
       bg-white
       border
       border-slate-200
-      rounded-xl
+      rounded-3xl
       overflow-hidden
       shadow-sm
       transition
-      hover:-translate-y-0.5
       hover:shadow-md
       "
     >
@@ -56,7 +55,7 @@ function DoctorCard({ doctor }: Props) {
 
       {/* Информация */}
 
-      <div className="border-t-2 border-blue-800 p-4">
+      <div className="p-4">
         <h2
           className="
           text-base
@@ -71,7 +70,7 @@ function DoctorCard({ doctor }: Props) {
           className="
           mt-1
           text-sm
-          text-blue-700
+          text-slate-600
           "
         >
           {doctor.position}
@@ -96,8 +95,8 @@ function DoctorCard({ doctor }: Props) {
           mt-4
           text-sm
           font-medium
-          text-blue-700
-          hover:underline
+          text-slate-700
+          hover:text-slate-900
           "
         >
           Подробнее →

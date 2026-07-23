@@ -10,77 +10,48 @@ type Department = {
 
 function DepartmentCard({ department }: { department: Department }) {
   return (
-    <div
-      className="
-      bg-white
-      border
-      border-gray-200
-      rounded-lg
-      p-6
-      hover:border-blue-300
-      transition
-      "
-    >
+    <div className="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition hover:border-blue-200 hover:shadow-md">
       {/* Название */}
 
-      <h3
-        className="
-        text-xl
-        font-semibold
-        text-blue-800
-        "
-      >
-        {department.name}
-      </h3>
+      <div className="p-5">
+        <h3 className="text-lg font-semibold text-blue-800">
+          {department.name}
+        </h3>
 
-      {/* Описание */}
+        {/* Описание */}
 
-      <p
-        className="
-        mt-4
-        text-gray-600
-        leading-relaxed
-        line-clamp-3
-        "
-      >
-        {department.description}
-      </p>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
+          {department.description}
+        </p>
 
-      {/* Информация */}
+        {/* Информация */}
 
-      <div className="mt-6 space-y-3 text-sm text-gray-700">
-        <div>
-          <span className="font-semibold text-gray-800">
-            Медицинские услуги:
-          </span>
+        <div className="mt-5 space-y-3 text-sm text-slate-600">
+          <div>
+            <p className="text-xs uppercase tracking-[0.14em] text-blue-500">
+              Медицинские услуги
+            </p>
+            <p className="mt-1">{department.services.length} направлений</p>
+          </div>
 
-          <p className="mt-1">{department.services.length} направлений</p>
+          <div>
+            <p className="text-xs uppercase tracking-[0.14em] text-blue-500">
+              Режим работы
+            </p>
+            <p className="mt-1">{department.schedule}</p>
+          </div>
         </div>
 
-        <div>
-          <span className="font-semibold text-gray-800">Режим работы:</span>
+        {/* Кнопка */}
 
-          <p className="mt-1">{department.schedule}</p>
-        </div>
+        <Link
+          to={`/departments/${department.id}`}
+          className="mt-5 inline-flex items-center text-sm font-medium text-blue-800 transition hover:text-blue-900"
+        >
+          Подробнее
+          <span className="ml-2">→</span>
+        </Link>
       </div>
-
-      {/* Кнопка */}
-
-      <Link
-        to={`/departments/${department.id}`}
-        className="
-        mt-6
-        inline-flex
-        items-center
-        text-blue-700
-        font-medium
-        hover:text-blue-900
-        transition
-        "
-      >
-        Подробнее
-        <span className="ml-2">→</span>
-      </Link>
     </div>
   );
 }
