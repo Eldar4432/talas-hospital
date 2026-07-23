@@ -19,11 +19,12 @@ function DoctorCard({ doctor }: Props) {
       className="
       bg-white
       border
-      border-slate-200
-      rounded-3xl
+      border-blue-100
+      rounded-2xl
       overflow-hidden
       shadow-sm
       transition
+      hover:border-blue-200
       hover:shadow-md
       "
     >
@@ -33,7 +34,7 @@ function DoctorCard({ doctor }: Props) {
         className="
         aspect-[3/4]
         w-full
-        bg-slate-100
+        bg-blue-50
         overflow-hidden
         "
       >
@@ -60,7 +61,7 @@ function DoctorCard({ doctor }: Props) {
           className="
           text-base
           font-semibold
-          text-slate-800
+          text-blue-800
           "
         >
           {doctor.name}
@@ -95,8 +96,8 @@ function DoctorCard({ doctor }: Props) {
           mt-4
           text-sm
           font-medium
-          text-slate-700
-          hover:text-slate-900
+          text-blue-800
+          hover:text-blue-900
           "
         >
           Подробнее →
