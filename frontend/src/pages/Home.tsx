@@ -10,11 +10,12 @@ function Home() {
   return (
     <main>
       <Hero />
+      <NewsSection />
+
       <StatisticsSection />
       <ServicesSection />
       <DepartmentsSection />
       <DoctorsSection />
-      <NewsSection />
       <ContactsSection />
     </main>
   );

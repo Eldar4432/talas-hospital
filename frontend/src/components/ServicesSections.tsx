@@ -3,7 +3,7 @@ import { services } from "../data/services";
 
 function ServicesSection() {
   return (
-    <section className="bg-blue-50/60 py-10">
+    <section className="bg-white py-10">
       <div className="mx-auto max-w-5xl px-5">
         <div className="mb-7">
           <h2 className="text-2xl font-semibold text-blue-800">

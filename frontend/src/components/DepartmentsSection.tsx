@@ -12,7 +12,7 @@ function DepartmentsSection() {
   }, []);
 
   return (
-    <section className="bg-blue-50/60 py-10">
+    <section className="bg-slate-50 py-10">
       <div className="mx-auto max-w-5xl px-5">
         {/* Заголовок */}
 

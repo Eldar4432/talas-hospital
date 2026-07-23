@@ -27,7 +27,7 @@ function NewsSection() {
   const featuredNews = news[activeNews];
 
   return (
-    <section className="bg-blue-50/70 py-12">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mb-8 flex items-end justify-between gap-5">
           <div>

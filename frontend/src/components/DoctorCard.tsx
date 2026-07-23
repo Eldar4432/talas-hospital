@@ -11,7 +11,7 @@ interface Doctor {
 
 interface Props {
   doctor: Doctor;
-  /** Флаг активного состояния (например, при наведении или выборе), делающий плашку и рамку красными */
+  /** Флаг активного состояния при наведиеии делать красным */
   isActive?: boolean;
 }
 
@@ -37,7 +37,7 @@ function DoctorCard({ doctor, isActive = false }: Props) {
         }
       `}
     >
-      {/* Фото сотрудника */}
+      {/* фото врача */}
       <img
         src={
           doctor.image
