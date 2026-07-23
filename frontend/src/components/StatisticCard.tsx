@@ -9,19 +9,21 @@ function StatisticCard({ statistic }: { statistic: Statistic }) {
       className="
       text-center
       border
-      border-gray-200
-      rounded-xl
-      py-8
-      px-4
+      border-blue-100
+      rounded-2xl
+      py-6
+      px-3
       bg-white
-      hover:border-blue-300
+      shadow-sm
+      hover:border-blue-200
+      hover:shadow-md
       transition
       "
     >
       <div
         className="
-        text-4xl
-        font-bold
+        text-2xl
+        font-semibold
         text-blue-800
         "
       >
@@ -30,8 +32,9 @@ function StatisticCard({ statistic }: { statistic: Statistic }) {
 
       <p
         className="
-        mt-3
-        text-gray-600
+        mt-2
+        text-sm
+        text-slate-600
         "
       >
         {statistic.title}
