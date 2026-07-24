@@ -1,12 +1,23 @@
 import { Link } from "react-router-dom";
-import hospitalImage from "../assets/images/hospital.jpg";
+import hospitalImage from "../assets/images/DJI_0003.jpg.jpeg";
+import shanhaiImage from "../assets/images/DJI_0005.jpg.jpeg";
+
 import eyesdepartmentImage from "../assets/images/eyesdepatment.jpeg";
 import administationImage from "../assets/images/administation.jpeg";
+import kardiologiaImage from "../assets/images/DJI_0077.jpg.jpeg";
+import receptionImage from "../assets/images/DJI_0052.jpg.jpeg";
 import { useEffect, useState } from "react";
 import { getHospitalInfo } from "../api/hospitalInfoApi";
 import type { HospitalInfo } from "../api/hospitalInfoApi";
 
-const heroImages = [hospitalImage, eyesdepartmentImage, administationImage];
+const heroImages = [
+  hospitalImage,
+  shanhaiImage,
+  eyesdepartmentImage,
+  administationImage,
+  kardiologiaImage,
+  receptionImage,
+];
 
 function Hero() {
   const [hospital, setHospital] = useState<HospitalInfo | null>(null);
