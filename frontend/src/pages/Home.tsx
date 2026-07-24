@@ -11,7 +11,6 @@ function Home() {
     <main>
       <Hero />
       <NewsSection />
-
       <StatisticsSection />
       <ServicesSection />
       <DepartmentsSection />
