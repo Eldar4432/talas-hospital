@@ -69,7 +69,7 @@ function Hero() {
     <section className="relative overflow-hidden">
       <img
         src={heroImages[currentIndex]}
-        alt="Таласская областная объединенная больница"
+        alt="Таласская областная объединенная больница им. Ч.Мамбетова"
         className="w-full h-[420px] md:h-[460px] object-cover"
       />
 
